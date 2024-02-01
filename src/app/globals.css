@@ -1,3 +1,147 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --normal: #d3d3af;
+  --fighting: #d56723;
+  --flying: #a1d1f8;
+  --poison: #7fa8c9;
+  --ground: #7c7e29;
+  --rock: #a38c21;
+  --bug: #729f3f;
+  --ghost: #7b62a3;
+  --steel: #9eb7b8;
+  --fire: #fd7d24;
+  --water: #4592c4;
+  --grass: #9bcc50;
+  --electric: #eed535;
+  --psychic: #f366b9;
+  --ice: #51c4e7;
+  --dragon: #3d167c;
+  --dark: #303030;
+  --fairy: #fdb9e9;
+  --unknown: #000;
+  --shadow: #333;
+}
+.normal {
+  background: var(--normal);
+}
+.fighting {
+  background: var(--fighting);
+}
+.flying {
+  background: var(--flying);
+}
+.poison {
+  background: var(--poison);
+}
+.ground {
+  background: var(--ground);
+}
+.rock {
+  background: var(--rock);
+}
+.bug {
+  background: var(--bug);
+}
+.ghost {
+  background: var(--ghost);
+}
+.steel {
+  background: var(--steel);
+}
+.fire {
+  background: var(--fire);
+}
+.water {
+  background: var(--water);
+}
+.grass {
+  background: var(--grass);
+}
+.electric {
+  background: var(--electric);
+}
+.psychic {
+  background: var(--psychic);
+}
+.ice {
+  background: var(--ice);
+}
+.dragon {
+  background: var(--dragon);
+}
+.dark {
+  background: var(--dark);
+}
+.fairy {
+  background: var(--fairy);
+}
+.unknown {
+  background: var(--unknown);
+}
+.shadow {
+  background: var(--shadow);
+}
+
+.borda-normal {
+  border-color: var(--normal);
+}
+.borda-fighting {
+  border-color: var(--fighting);
+}
+.borda-flying {
+  border-color: var(--flying);
+}
+.borda-poison {
+  border-color: var(--poison);
+}
+.borda-ground {
+  border-color: var(--ground);
+}
+.borda-rock {
+  border-color: var(--rock);
+}
+.borda-bug {
+  border-color: var(--bug);
+}
+.borda-ghost {
+  border-color: var(--ghost);
+}
+.borda-steel {
+  border-color: var(--steel);
+}
+.borda-fire {
+  border-color: var(--fire);
+}
+.borda-water {
+  border-color: var(--water);
+}
+.borda-grass {
+  border-color: var(--grass);
+}
+.borda-electric {
+  border-color: var(--electric);
+}
+.borda-psychic {
+  border-color: var(--psychic);
+}
+.borda-ice {
+  border-color: var(--ice);
+}
+.borda-dragon {
+  border-color: var(--dragon);
+}
+.borda-dark {
+  border-color: var(--dark);
+}
+.borda-fairy {
+  border-color: var(--fairy);
+}
+.borda-unknown {
+  border-color: var(--unknown);
+}
+.borda-shadow {
+  border-color: var(--shadow);
+}
