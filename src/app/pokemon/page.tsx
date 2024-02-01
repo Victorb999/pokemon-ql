@@ -1,61 +1,49 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-
+import { requestPokemonListPerGeneration } from "../../services/requestListPokemon";
+import { useState } from "react";
 //https://beta.pokeapi.co/graphql/console/
-const POKEMON_QUERY = `
-  query samplePokeAPIquery {
-    pokemon_v2_pokemon(where: {pokemon_v2_pokemonspecy: {generation_id: {_eq: 8}}}, order_by: {id: asc}) {
-      id
-      name
-      order
-      pokemon_species_id
-      is_default
-      pokemon_v2_pokemontypes {
-        pokemon_v2_type {
-          name
-          id
-        }
-      }
-      pokemon_v2_pokemonsprites {
-        sprites
-      }
-      pokemon_v2_pokemonspecy {
-        generation_id
-      }
-    }
-  }
-`;
-
-const requestPokemonList = async () => {
-  console.log("ico");
-  const response = await fetch("https://beta.pokeapi.co/graphql/v1beta", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      // Adicione quaisquer cabeçalhos necessários, como autorização
-    },
-    body: JSON.stringify({ query: POKEMON_QUERY }),
-  });
-
-  const result = await response.json();
-  return result.data;
-};
 
 export default function Page() {
+  const [generation, setGeneration] = useState("1");
+
   const { data, error, isLoading } = useQuery({
-    queryKey: ["pokemonList"],
-    queryFn: requestPokemonList,
+    queryKey: ["pokemonList", generation],
+    queryFn: () => requestPokemonListPerGeneration(generation),
     staleTime: 5 * 1000,
   });
-  console.log(data, error, isLoading);
+  console.log(generation, "current");
+  // Função para lidar com a seleção do <select>
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div className="flex flex-col items-center p-4 gap-4">
-      <h1 className="text-3xl font-bold">Pokémon List</h1>
+      <h1 className="text-3xl font-bold">Pokémon list per generation</h1>
+
+      <div className="flex gap-2 justify-center items-center">
+        <label htmlFor="generation">Generation:</label>
+        <select
+          name="generation"
+          id="generation"
+          className="bg-slate-200 p-2 rounded"
+          onChange={(e) => setGeneration(e.target.value)}
+          defaultValue={generation}
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+      </div>
+
       <div className="flex flex-wrap gap-2 justify-center">
         {data.pokemon_v2_pokemon.map((pokemon) => (
           <div
