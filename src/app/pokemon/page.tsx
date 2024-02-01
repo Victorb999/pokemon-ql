@@ -64,7 +64,8 @@ export default function Page() {
               {pokemon.pokemon_v2_pokemontypes.map((type) => (
                 <li
                   key={type.pokemon_v2_type.id}
-                  className="text-sm rounded bg-violet-400 p-1 mb-1 flex justify-center items-center"
+                  className={`text-sm rounded bg-${type.pokemon_v2_type.name}
+                  p-1 mb-1 flex justify-center items-center text-white`}
                 >
                   {type.pokemon_v2_type.name}
                 </li>
