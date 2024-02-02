@@ -1,15 +1,20 @@
 "use client";
 import { useQuery } from "react-query";
-import { requestPokemonListPerGeneration } from "../services/requestListPokemon";
 import { useAtom } from "jotai";
-import { generationIdAtom } from "../store/store";
-import { SelectGeneration } from "../components/SelectGeneration/SelectGeneration";
-import { ListPokemon } from "../components/ListPokemon/ListPokemon";
-import { LoadingPokemon } from "../components/LoadingPokemon/LoadingPokemon";
+import { requestPokemonListPerGeneration } from "../../../services/requestListPokemon";
+import { generationIdAtom, myStore } from "../../../store/store";
+import { SelectGeneration } from "../../../components/SelectGeneration/SelectGeneration";
+import { ListPokemon } from "../../../components/ListPokemon/ListPokemon";
+import { LoadingPokemon } from "../../../components/LoadingPokemon/LoadingPokemon";
 //https://beta.pokeapi.co/graphql/console/
 
-export default function Page() {
-  const [generationId] = useAtom(generationIdAtom);
+interface PageProps {
+  params: { id: string };
+}
+
+export default function Page({ params }: PageProps) {
+  const [generationId, setGenerationId] = useAtom(generationIdAtom);
+  setGenerationId(params.id);
 
   const { data, error, isLoading } = useQuery(
     ["pokemonList", generationId],
