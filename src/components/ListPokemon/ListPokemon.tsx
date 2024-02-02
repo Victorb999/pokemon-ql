@@ -15,6 +15,7 @@ export const ListPokemon = ({ data }: ListPokemonProps) => {
         >
           <h1>{pokemon.name}</h1>
           <h2># {pokemon.id}</h2>
+
           {pokemon.pokemon_v2_pokemonsprites[0].sprites.front_default && (
             <Image
               src={pokemon.pokemon_v2_pokemonsprites[0].sprites.front_default}
@@ -23,6 +24,7 @@ export const ListPokemon = ({ data }: ListPokemonProps) => {
               height={96}
             />
           )}
+
           <ul>
             {pokemon.pokemon_v2_pokemontypes.map((type) => (
               <li

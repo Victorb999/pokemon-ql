@@ -11,7 +11,7 @@ interface ListGenerationProps {
 export const SelectGeneration = () => {
   const [generationId, setGenerationId] = useAtom(generationIdAtom);
   const { data } = useQuery(["generationList"], () => requestListGeneration());
-
+  console.log("data", generationId);
   return (
     <div className="flex gap-2 justify-center items-center">
       <label htmlFor="generation">Generation:</label>
@@ -20,7 +20,7 @@ export const SelectGeneration = () => {
         id="generation"
         className="bg-amber-200 p-2 rounded uppercase"
         onChange={(e) => setGenerationId(e.target.value)}
-        defaultValue={generationId}
+        value={generationId}
       >
         {data &&
           data.pokemon_v2_generation.map((generation: GenerationList) => (
