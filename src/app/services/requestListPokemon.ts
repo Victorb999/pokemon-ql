@@ -31,7 +31,6 @@ export const requestPokemonListPerGeneration = async (id: string) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      // Adicione quaisquer cabeçalhos necessários, como autorização
     },
     body: JSON.stringify({ query: listPokemonPerGeneration(id) }),
   });
@@ -39,8 +38,3 @@ export const requestPokemonListPerGeneration = async (id: string) => {
   const result = await response.json();
   return result.data;
 };
-
-/* `pokemon_v2_generation {
-    id
-    name
-  }` */
