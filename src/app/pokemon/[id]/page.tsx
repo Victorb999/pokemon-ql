@@ -44,7 +44,21 @@ export default function Page({ params }: PageProps) {
               .flavor_text
           }
         </h3>
-        <h3>{data.pokemon_v2_pokemonspecy.pokemon_v2_generation.name}</h3>
+
+        {data.pokemon_v2_pokemonspecy.pokemon_v2_pokemonevolutions.map(
+          (evolution) => (
+            <span key={evolution.id}>
+              {evolution.min_level} {evolution.pokemon_v2_evolutiontrigger.name}
+            </span>
+          ),
+        )}
+
+        <h3>{data.pokemon_v2_pokemonspecy.pokemon_v2_pokemonshape.name}</h3>
+
+        {data.pokemon_v2_pokemonspecy.is_baby && <span>Baby</span>}
+        {data.pokemon_v2_pokemonspecy.is_legendary && <span>Legendary</span>}
+
+        {data.pokemon_v2_pokemonspecy.is_mithical && <span>Mithical</span>}
 
         {data.pokemon_v2_pokemontypes.map((type) => (
           <span key={type.pokemon_v2_type.id}>{type.pokemon_v2_type.name}</span>

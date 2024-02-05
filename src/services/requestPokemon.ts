@@ -47,6 +47,7 @@ const listPokemonPerId = (id: string) => {
             }
             pokemon_v2_pokemonevolutions {
               min_level
+              id
               pokemon_v2_evolutiontrigger {
                 name
               }
