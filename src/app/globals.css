@@ -24,6 +24,16 @@
   --unknown: #000;
   --shadow: #333;
 }
+.pattern {
+  background-image: url("../public/pattern/hexagon7.svg");
+}
+.pattern-square {
+  background-image: url("../public/pattern/squaresplus.svg");
+}
+.pattern-leave {
+  background-image: url("../public/pattern/leaves.svg");
+}
+
 .normal {
   background: var(--normal);
 }

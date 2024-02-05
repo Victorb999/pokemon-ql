@@ -13,12 +13,11 @@ export const ListPokemon = ({ data }: ListPokemonProps) => {
         <div
           key={pokemon.id}
           className={`flex flex-col items-center bg-rose-900
-          border-2 border-yellow-700 p-4 w-[128px] 
-          hover:bg-rose-700 hover:border-amber-200 hover:shadow-lg`}
-          style={{ backgroundImage: `url(${Hexagon.src})` }}
+          border-2 border-yellow-700 p-4 w-[128px] gap-2
+          hover:bg-rose-700 hover:border-amber-200 hover:shadow-lg pattern`}
         >
-          <h1>{pokemon.name}</h1>
-          <h2># {pokemon.id}</h2>
+          <h1 className="text-md font-bold capitalize">{pokemon.name}</h1>
+          <h2 className="text-stone-900 font-bold"># {pokemon.id}</h2>
 
           {pokemon.pokemon_v2_pokemonsprites[0].sprites.front_default && (
             <Image
@@ -34,7 +33,13 @@ export const ListPokemon = ({ data }: ListPokemonProps) => {
               <li
                 key={type.pokemon_v2_type.id}
                 className={`text-sm rounded ${type.pokemon_v2_type.name}
-              p-1 mb-1 flex justify-center items-center text-white text-zinc-100`}
+              p-1 px-2 mb-1 flex justify-center items-center 
+              ${
+                type.pokemon_v2_type.name === "dark" ||
+                type.pokemon_v2_type.name === "dragon"
+                  ? "text-stone-200"
+                  : "text-stone-900"
+              }`}
               >
                 {type.pokemon_v2_type.name}
               </li>
