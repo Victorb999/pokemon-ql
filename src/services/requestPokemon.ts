@@ -35,6 +35,16 @@ const listPokemonPerId = (id: string) => {
             is_mythical
             name
             id
+            pokemon_v2_pokemonspeciesflavortexts(limit: 1, where: {language_id: {_eq: 9}}) {
+                flavor_text
+                id
+                language_id
+            }
+            pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: 9}}) {
+                genus
+                name
+                language_id
+            }
             pokemon_v2_pokemonevolutions {
               min_level
               pokemon_v2_evolutiontrigger {
@@ -117,5 +127,5 @@ export const requestPokemon = async (id: string) => {
   if (result.errors || result.data.pokemon_v2_pokemon.length === 0) {
     throw new Error("Ops, something went wrong. Try again later.");
   }
-  return result.data;
+  return result.data.pokemon_v2_pokemon[0];
 };
