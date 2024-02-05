@@ -1,5 +1,5 @@
 const API_URL = "https://beta.pokeapi.co/graphql/v1beta";
-
+//https://beta.pokeapi.co/graphql/console/
 const listPokemonPerGeneration = (id: string) => {
   return `
   query samplePokeAPIquery {
