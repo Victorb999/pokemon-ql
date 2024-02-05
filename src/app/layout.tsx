@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ReactQueryProvider from "../providers/ReactQueryProvider";
 import { Provider } from "jotai";
+import { HeaderMenu } from "../components/HeaderMenu/HeaderMenu";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,6 +19,7 @@ export default function RootLayout({
       <Provider>
         <ReactQueryProvider>
           <body className="pattern-leave bg-stone-950 text-stone-100 w-[100dvw] h-[100dvh]">
+            <HeaderMenu />
             {children}
           </body>
         </ReactQueryProvider>

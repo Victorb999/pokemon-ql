@@ -9,18 +9,15 @@ interface ListPokemonProps {
 
 export const ListPokemon = ({ data }: ListPokemonProps) => {
   return (
-    <Link
-      href={`/pokemon/${data.pokemon_v2_pokemon[0].id}`}
-      as={`/pokemon/${data.pokemon_v2_pokemon[0].id}`}
-    >
-      <div className="flex flex-wrap gap-2 justify-center">
-        {data.pokemon_v2_pokemon.map((pokemon: PokemonList) => (
-          <div
-            key={pokemon.id}
-            className={`flex flex-col items-center bg-rose-900
-          border-2 border-yellow-700 p-4 w-[128px] gap-2
+    <div className="flex flex-wrap gap-2 justify-center">
+      {data.pokemon_v2_pokemon.map((pokemon: PokemonList) => (
+        <div
+          key={pokemon.id}
+          className={`flex flex-col items-center bg-rose-900
+            border-2 border-yellow-700 p-4 w-[128px] gap-2
           hover:bg-rose-700 hover:border-amber-200 hover:shadow-lg pattern`}
-          >
+        >
+          <Link href={`/pokemon/${pokemon.id}`} as={`/pokemon/${pokemon.id}`}>
             <h1 className="text-md font-bold capitalize">{pokemon.name}</h1>
             <h2 className="text-stone-900 font-bold"># {pokemon.id}</h2>
 
@@ -50,9 +47,9 @@ export const ListPokemon = ({ data }: ListPokemonProps) => {
                 </li>
               ))}
             </ul>
-          </div>
-        ))}
-      </div>
-    </Link>
+          </Link>
+        </div>
+      ))}
+    </div>
   );
 };
