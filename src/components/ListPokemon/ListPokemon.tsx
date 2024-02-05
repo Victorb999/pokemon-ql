@@ -12,9 +12,9 @@ export const ListPokemon = ({ data }: ListPokemonProps) => {
       {data.pokemon_v2_pokemon.map((pokemon: PokemonList) => (
         <div
           key={pokemon.id}
-          className={`flex flex-col items-center bg-rose-700
-          border-2 border-yellow-500 p-4 w-[128px] 
-          hover:bg-rose-600 hover:border-amber-200 hover:shadow-lg`}
+          className={`flex flex-col items-center bg-rose-900
+          border-2 border-yellow-700 p-4 w-[128px] 
+          hover:bg-rose-700 hover:border-amber-200 hover:shadow-lg`}
           style={{ backgroundImage: `url(${Hexagon.src})` }}
         >
           <h1>{pokemon.name}</h1>

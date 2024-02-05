@@ -17,7 +17,9 @@ export default function RootLayout({
     <html lang="en">
       <Provider>
         <ReactQueryProvider>
-          <body className="bg-amber-50 w-[100dvw] h-[100dvh]">{children}</body>
+          <body className="bg-stone-950 text-stone-100 w-[100dvw] h-[100dvh]">
+            {children}
+          </body>
         </ReactQueryProvider>
       </Provider>
     </html>
