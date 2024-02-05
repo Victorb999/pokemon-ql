@@ -9,7 +9,7 @@ interface LoadingPokemonProps {
 
 export const LoadingPokemon = ({ load, msg }: LoadingPokemonProps) => {
   return (
-    <div className="flex flex-col items-center  justify-center p-4 gap-4 bg-white rounded h-[100dvh]">
+    <div className="flex flex-col items-center justify-center p-4 gap-4 rounded h-[100dvh]">
       <Image
         src={load === "gastly" ? gastlyLoading : pikachuLoading}
         alt="loading"
