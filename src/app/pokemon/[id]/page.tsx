@@ -22,7 +22,7 @@ export default function Page({ params }: PageProps) {
             width={100}
             height={100}
           />
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-3xl font-bold capitalize">
             #{data.id} {data.name}
           </h1>
         </div>
@@ -47,6 +47,7 @@ export default function Page({ params }: PageProps) {
           isMythical={data.pokemon_v2_pokemonspecy.is_mythical}
           isLegendary={data.pokemon_v2_pokemonspecy.is_legendary}
           types={data.pokemon_v2_pokemontypes}
+          generationId={data.pokemon_v2_pokemonspecy.pokemon_v2_generation.id}
         />
 
         {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
