@@ -27,6 +27,9 @@
 .pattern {
   background-image: url("../public/pattern/hexagon7.svg");
 }
+.pattern-negative {
+  background-image: url("../public/pattern/hexagon6.svg");
+}
 .pattern-square {
   background-image: url("../public/pattern/squaresplus.svg");
 }
