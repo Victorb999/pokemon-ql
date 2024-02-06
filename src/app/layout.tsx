@@ -3,6 +3,15 @@ import "./globals.css";
 import ReactQueryProvider from "../providers/ReactQueryProvider";
 import { Provider } from "jotai";
 import { HeaderMenu } from "../components/HeaderMenu/HeaderMenu";
+import { Londrina_Solid } from "@next/font/google";
+
+const londrina = Londrina_Solid({
+  subsets: ["latin"],
+  display: "swap",
+  weight: "300",
+  //👇 Add variable to our object
+  variable: "--font-londrina",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +27,10 @@ export default function RootLayout({
     <html lang="en">
       <Provider>
         <ReactQueryProvider>
-          <body className="pattern-leave bg-stone-950 text-stone-100 w-[100dvw] h-[100dvh]">
+          <body
+            className={`${londrina.className} pattern-leave tracking-widest
+          bg-stone-950 text-stone-100 w-[100dvw] h-[100dvh]`}
+          >
             <HeaderMenu />
             {children}
           </body>
