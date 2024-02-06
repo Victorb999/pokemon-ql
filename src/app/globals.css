@@ -35,123 +35,123 @@
 }
 
 .normal {
-  background: var(--normal);
+  background-color: var(--normal);
 }
 .fighting {
-  background: var(--fighting);
+  background-color: var(--fighting);
 }
 .flying {
-  background: var(--flying);
+  background-color: var(--flying);
 }
 .poison {
-  background: var(--poison);
+  background-color: var(--poison);
 }
 .ground {
-  background: var(--ground);
+  background-color: var(--ground);
 }
 .rock {
-  background: var(--rock);
+  background-color: var(--rock);
 }
 .bug {
-  background: var(--bug);
+  background-color: var(--bug);
 }
 .ghost {
-  background: var(--ghost);
+  background-color: var(--ghost);
 }
 .steel {
-  background: var(--steel);
+  background-color: var(--steel);
 }
 .fire {
-  background: var(--fire);
+  background-color: var(--fire);
 }
 .water {
-  background: var(--water);
+  background-color: var(--water);
 }
 .grass {
-  background: var(--grass);
+  background-color: var(--grass);
 }
 .electric {
-  background: var(--electric);
+  background-color: var(--electric);
 }
 .psychic {
-  background: var(--psychic);
+  background-color: var(--psychic);
 }
 .ice {
-  background: var(--ice);
+  background-color: var(--ice);
 }
 .dragon {
-  background: var(--dragon);
+  background-color: var(--dragon);
 }
 .dark {
-  background: var(--dark);
+  background-color: var(--dark);
 }
 .fairy {
-  background: var(--fairy);
+  background-color: var(--fairy);
 }
 .unknown {
-  background: var(--unknown);
+  background-color: var(--unknown);
 }
 .shadow {
-  background: var(--shadow);
+  background-color: var(--shadow);
 }
 
-.borda-normal {
+.border-normal {
   border-color: var(--normal);
 }
-.borda-fighting {
+.border-fighting {
   border-color: var(--fighting);
 }
-.borda-flying {
+.border-flying {
   border-color: var(--flying);
 }
-.borda-poison {
+.border-poison {
   border-color: var(--poison);
 }
-.borda-ground {
+.border-ground {
   border-color: var(--ground);
 }
-.borda-rock {
+.border-rock {
   border-color: var(--rock);
 }
-.borda-bug {
+.border-bug {
   border-color: var(--bug);
 }
-.borda-ghost {
+.border-ghost {
   border-color: var(--ghost);
 }
-.borda-steel {
+.border-steel {
   border-color: var(--steel);
 }
-.borda-fire {
+.border-fire {
   border-color: var(--fire);
 }
-.borda-water {
+.border-water {
   border-color: var(--water);
 }
-.borda-grass {
+.border-grass {
   border-color: var(--grass);
 }
-.borda-electric {
+.border-electric {
   border-color: var(--electric);
 }
-.borda-psychic {
+.border-psychic {
   border-color: var(--psychic);
 }
-.borda-ice {
+.border-ice {
   border-color: var(--ice);
 }
-.borda-dragon {
+.border-dragon {
   border-color: var(--dragon);
 }
-.borda-dark {
+.border-dark {
   border-color: var(--dark);
 }
-.borda-fairy {
+.border-fairy {
   border-color: var(--fairy);
 }
-.borda-unknown {
+.border-unknown {
   border-color: var(--unknown);
 }
-.borda-shadow {
+.border-shadow {
   border-color: var(--shadow);
 }

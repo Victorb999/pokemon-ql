@@ -8,6 +8,7 @@ export interface PokemonList {
   }[];
   pokemon_v2_pokemontypes: {
     pokemon_v2_type: {
+      id:string;
       name: string;
     };
   }[];

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { PokemonList } from "../../types/types";
 import Hexagon from "../../public/pattern/hexagon7.svg";
 import Link from "next/link";
+import { LabelTypes } from "../LabelType/LabelType";
 
 interface ListPokemonProps {
   data: { pokemon_v2_pokemon: PokemonList[] };
@@ -30,23 +31,14 @@ export const ListPokemon = ({ data }: ListPokemonProps) => {
               />
             )}
 
-            <ul>
+            <div>
               {pokemon.pokemon_v2_pokemontypes.map((type) => (
-                <li
+                <LabelTypes
+                  name={type.pokemon_v2_type.name}
                   key={type.pokemon_v2_type.id}
-                  className={`text-sm rounded ${type.pokemon_v2_type.name}
-              p-1 px-2 mb-1 flex justify-center items-center 
-              ${
-                type.pokemon_v2_type.name === "dark" ||
-                type.pokemon_v2_type.name === "dragon"
-                  ? "text-stone-200"
-                  : "text-stone-900"
-              }`}
-                >
-                  {type.pokemon_v2_type.name}
-                </li>
+                />
               ))}
-            </ul>
+            </div>
           </Link>
         </div>
       ))}

@@ -3,6 +3,7 @@ import {
   PokemonV2Pokemontype,
 } from "@/src/types/types";
 import Image from "next/image";
+import { LabelTypes } from "../LabelType/LabelType";
 
 interface PokemonPerfilProps {
   urlImg: string;
@@ -33,30 +34,36 @@ export const PokemonPerfil = ({
 }: PokemonPerfilProps) => {
   return (
     <div
-      className={`flex flex-row p-2 gap-2 w-[90%] ${types[0].pokemon_v2_type.name} pattern`}
+      className={`flex flex-row p-2 gap-2 w-[90%]
+      border-2 border-${types[0].pokemon_v2_type.name}
+      bg-stone-900
+      pattern`}
     >
       <Image src={urlImg} alt={name} width={200} height={200} />
-      <div>
-        <h1>{title}</h1>
-        <h3>{generation}</h3>
-        <h3>{description}</h3>
+      <div className="flex flex-col gap-2">
+        <h1 className="text-2xl font-bold">{title}</h1>
+        <h3 className="text-xl capitalize">{generation}</h3>
+        <p>{description}</p>
 
         {evolutions.map((evolution) => (
-          <span key={evolution.id}>
-            {evolution.pokemon_v2_evolutiontrigger.name} {evolution.min_level}
+          <span key={evolution.id} className="text-md">
+            Evolution: {evolution.pokemon_v2_evolutiontrigger.name}{" "}
+            {evolution.min_level}
           </span>
         ))}
 
-        <h3>{shape}</h3>
+        <h3 className="text-md">Shape: {shape}</h3>
 
         {isBaby && <span>Baby</span>}
         {isLegendary && <span>Legendary</span>}
 
         {isMythical && <span>Mythical</span>}
 
-        {types.map((type) => (
-          <span key={type.id}>{type.pokemon_v2_type.name}</span>
-        ))}
+        <div className="flex gap-2">
+          {types.map((type) => (
+            <LabelTypes key={type.id} name={type.pokemon_v2_type.name} />
+          ))}
+        </div>
       </div>
     </div>
   );
