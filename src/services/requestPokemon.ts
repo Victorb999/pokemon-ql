@@ -1,3 +1,5 @@
+import { DataError, PokemonData } from "../types/types";
+
 const API_URL = "https://beta.pokeapi.co/graphql/v1beta";
 //https://beta.pokeapi.co/graphql/console/
 const listPokemonPerId = (id: string) => {
@@ -124,7 +126,8 @@ export const requestPokemon = async (id: string) => {
     body: JSON.stringify({ query: listPokemonPerId(id) }),
   });
 
-  const result = await response.json();
+  const result: PokemonData = await response.json();
+
   if (result.errors || result.data.pokemon_v2_pokemon.length === 0) {
     throw new Error("Ops, something went wrong. Try again later.");
   }
