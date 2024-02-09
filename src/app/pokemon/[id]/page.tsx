@@ -1,8 +1,9 @@
 "use client";
+import Image from "next/image";
 import { useQuery } from "react-query";
 import { requestPokemon } from "@/src/services/requestPokemon";
-import Image from "next/image";
 import { PokemonPerfil } from "@/src/components/PokemonPerfil/PokemonPerfil";
+import { PokemonForms } from "@/src/components/PokemonForms/PokemonForms";
 interface PageProps {
   params: { id: string };
 }
@@ -50,7 +51,19 @@ export default function Page({ params }: PageProps) {
           generationId={data.pokemon_v2_pokemonspecy.pokemon_v2_generation.id}
         />
 
-        {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+        <PokemonForms
+          forms={data.pokemon_v2_pokemonspecy.pokemon_v2_pokemons}
+        />
+
+        {/* <div className="flex flex-col w-[80%] border-y py-2 border-stone-600">
+          <pre>
+            {JSON.stringify(
+              data.pokemon_v2_pokemonspecy.pokemon_v2_pokemons,
+              null,
+              2,
+            )}
+          </pre>
+        </div> */}
       </div>
     );
   }

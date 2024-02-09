@@ -40,7 +40,7 @@ export const PokemonPerfil = ({
       className={`flex flex-col md:flex-row lg:flex-row 
       justify-center items-center
       p-4 gap-2 w-[90%]
-      border-2 ${types[0].pokemon_v2_type.name}
+      ${types[0].pokemon_v2_type.name}
       bg-stone-900
       pattern-negative`}
     >

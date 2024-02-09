@@ -8,7 +8,7 @@ export interface PokemonList {
   }[];
   pokemon_v2_pokemontypes: {
     pokemon_v2_type: {
-      id:string;
+      id: string;
       name: string;
     };
   }[];
@@ -430,11 +430,13 @@ export interface PokemonV2Pokemonform {
   is_mega: boolean;
   is_default: boolean;
   is_battle_only: boolean;
+  pokemon_id: boolean;
   pokemon_v2_pokemon: PokemonV2Pokemon3;
 }
 
 export interface PokemonV2Pokemon3 {
   pokemon_v2_pokemonsprites: PokemonV2Pokemonsprite2[];
+  pokemon_v2_pokemontypes: PokemonV2Pokemontype[];
 }
 
 export interface PokemonV2Pokemonsprite2 {

@@ -87,9 +87,16 @@ const listPokemonPerId = (id: string) => {
                 is_mega
                 is_default
                 is_battle_only
+                pokemon_id
                 pokemon_v2_pokemon {
                   pokemon_v2_pokemonsprites {
                     sprites
+                  }
+                  pokemon_v2_pokemontypes {
+                    pokemon_v2_type {
+                      id
+                      name
+                    }
                   }
                 }
               }
