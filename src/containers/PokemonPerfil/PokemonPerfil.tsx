@@ -1,24 +1,24 @@
 import {
   PokemonV2Pokemonevolution,
   PokemonV2Pokemontype,
-} from "@/src/types/types";
-import Image from "next/image";
-import { LabelTypes } from "../LabelType/LabelType";
-import Link from "next/link";
+} from "@/src/types/types"
+import Image from "next/image"
+import { LabelTypes } from "../../components/LabelType/LabelType"
+import Link from "next/link"
 
 interface PokemonPerfilProps {
-  urlImg: string;
-  name: string;
-  title: string;
-  description: string;
-  generation: string;
-  generationId: number;
-  evolutions: PokemonV2Pokemonevolution[];
-  shape: string;
-  isBaby?: boolean;
-  isMythical?: boolean;
-  isLegendary?: boolean;
-  types: PokemonV2Pokemontype[];
+  urlImg: string
+  name: string
+  title: string
+  description: string
+  generation: string
+  generationId: number
+  evolutions: PokemonV2Pokemonevolution[]
+  shape: string
+  isBaby?: boolean
+  isMythical?: boolean
+  isLegendary?: boolean
+  types: PokemonV2Pokemontype[]
 }
 
 export const PokemonPerfil = ({
@@ -49,7 +49,7 @@ export const PokemonPerfil = ({
       </div>
       <div className="flex flex-col gap-2 max-w-full md:max-w-[400px]">
         <h1 className="text-2xl font-bold">{title}</h1>
-        <p>{description}</p>
+        <p>{description.replace("", "\n")}</p>
 
         <div>
           {isBaby && <span>Baby</span>}
@@ -93,5 +93,5 @@ export const PokemonPerfil = ({
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}

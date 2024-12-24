@@ -1,6 +1,6 @@
-import { DataError, PokemonData } from "../types/types";
+import { DataError, PokemonData } from "../types/types"
 
-const API_URL = "https://beta.pokeapi.co/graphql/v1beta";
+const API_URL = "https://beta.pokeapi.co/graphql/v1beta"
 //https://beta.pokeapi.co/graphql/console/
 const listPokemonPerId = (id: string) => {
   return `
@@ -73,6 +73,12 @@ const listPokemonPerId = (id: string) => {
                   pokemon_v2_pokemonsprites {
                     sprites
                   }
+                  pokemon_v2_pokemontypes {
+                    pokemon_v2_type {
+                      id
+                      name
+                    }
+                  }
                 }
                 pokemon_v2_evolutionchain {
                   id
@@ -121,8 +127,8 @@ const listPokemonPerId = (id: string) => {
           order
         }
       }
-  `;
-};
+  `
+}
 
 export const requestPokemon = async (id: string) => {
   const response = await fetch(API_URL, {
@@ -131,12 +137,12 @@ export const requestPokemon = async (id: string) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ query: listPokemonPerId(id) }),
-  });
+  })
 
-  const result: PokemonData = await response.json();
+  const result: PokemonData = await response.json()
 
   if (result.errors || result.data.pokemon_v2_pokemon.length === 0) {
-    throw new Error("Ops, something went wrong. Try again later.");
+    throw new Error("Ops, something went wrong. Try again later.")
   }
-  return result.data.pokemon_v2_pokemon[0];
-};
+  return result.data.pokemon_v2_pokemon[0]
+}

@@ -1,11 +1,11 @@
-import Image from "next/image";
-import { PokemonList } from "../../types/types";
-import Hexagon from "../../public/pattern/hexagon7.svg";
-import Link from "next/link";
-import { LabelTypes } from "../LabelType/LabelType";
+import Image from "next/image"
+import { PokemonList } from "../../types/types"
+import Hexagon from "../../public/pattern/hexagon7.svg"
+import Link from "next/link"
+import { LabelTypes } from "../../components/LabelType/LabelType"
 
 interface ListPokemonProps {
-  data: { pokemon_v2_pokemon: PokemonList[] };
+  data: { pokemon_v2_pokemon: PokemonList[] }
 }
 
 export const ListPokemon = ({ data }: ListPokemonProps) => {
@@ -43,5 +43,5 @@ export const ListPokemon = ({ data }: ListPokemonProps) => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}

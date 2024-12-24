@@ -1,30 +1,30 @@
-import { PokemonV2Pokemon2 } from "@/src/types/types";
-import { LabelTypes } from "../LabelType/LabelType";
-import Image from "next/image";
-import Link from "next/link";
+import { PokemonV2Pokemon2 } from "@/src/types/types"
+import { LabelTypes } from "../../components/LabelType/LabelType"
+import Image from "next/image"
+import Link from "next/link"
 
 interface PokemonFormsProps {
-  forms: PokemonV2Pokemon2[];
+  forms: PokemonV2Pokemon2[]
 }
 
 export const PokemonForms = ({ forms }: PokemonFormsProps) => {
   return (
     <div
-      className={`flex flex-col md:flex-row lg:flex-row 
+      className={`flex flex-col 
         justify-center items-center
         p-4 gap-2 w-[90%] `}
     >
       <h2 className="text-2xl font-bold">Forms</h2>
-      <div className="flex gap-2 flex-wrap">
+      <div className="flex gap-2 flex-wrap justify-center items-center">
         {forms.map((form) => {
-          const formObj = form.pokemon_v2_pokemonforms[0];
+          const formObj = form.pokemon_v2_pokemonforms[0]
           return (
             <Link
               href={`/pokemon/${formObj.pokemon_id}`}
               key={formObj.id}
               className={`flex flex-col items-center 
               ${formObj.pokemon_v2_pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}
-                border-2 border-yellow-700 p-4 w-[128px] gap-2 overflow-hidden
+                border-2 border-yellow-700 p-4 w-[200px] gap-2 overflow-hidden min-h-[300px]
                 hover:border-amber-200 hover:shadow-lg pattern-negative`}
             >
               <span>#{formObj.pokemon_id}</span>
@@ -51,8 +51,8 @@ export const PokemonForms = ({ forms }: PokemonFormsProps) => {
                         key={type.id}
                         name={type.pokemon_v2_type.name}
                       />
-                    );
-                  },
+                    )
+                  }
                 )}
               </div>
 
@@ -62,10 +62,10 @@ export const PokemonForms = ({ forms }: PokemonFormsProps) => {
                 </span>
               )}
             </Link>
-          );
+          )
         })}
         {/* <pre>{JSON.stringify(forms, null, 2)}</pre> */}
       </div>
     </div>
-  );
-};
+  )
+}

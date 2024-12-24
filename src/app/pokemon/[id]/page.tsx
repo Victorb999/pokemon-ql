@@ -1,17 +1,18 @@
-"use client";
-import Image from "next/image";
-import { useQuery } from "react-query";
-import { requestPokemon } from "@/src/services/requestPokemon";
-import { PokemonPerfil } from "@/src/components/PokemonPerfil/PokemonPerfil";
-import { PokemonForms } from "@/src/components/PokemonForms/PokemonForms";
+"use client"
+import Image from "next/image"
+import { useQuery } from "react-query"
+import { requestPokemon } from "@/src/services/requestPokemon"
+import { PokemonPerfil } from "@/src/containers/PokemonPerfil/PokemonPerfil"
+import { PokemonForms } from "@/src/containers/PokemonForms/PokemonForms"
+import { PokemonFormsEvolutions } from "@/src/containers/PokemonFormsEvolutions/PokemonFormsEvolutions"
 interface PageProps {
-  params: { id: string };
+  params: { id: string }
 }
 
 export default function Page({ params }: PageProps) {
   const { data, error, isLoading } = useQuery(["pokemon", params.id], () =>
-    requestPokemon(params.id),
-  );
+    requestPokemon(params.id)
+  )
 
   if (data) {
     return (
@@ -55,16 +56,10 @@ export default function Page({ params }: PageProps) {
           forms={data.pokemon_v2_pokemonspecy.pokemon_v2_pokemons}
         />
 
-        {/* <div className="flex flex-col w-[80%] border-y py-2 border-stone-600">
-          <pre>
-            {JSON.stringify(
-              data.pokemon_v2_pokemonspecy.pokemon_v2_pokemons,
-              null,
-              2,
-            )}
-          </pre>
-        </div> */}
+        <PokemonFormsEvolutions
+          evolutions={data.pokemon_v2_pokemonspecy.pokemon_v2_evolutionchain}
+        />
       </div>
-    );
+    )
   }
 }

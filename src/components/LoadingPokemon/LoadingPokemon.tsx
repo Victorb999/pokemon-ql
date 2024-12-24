@@ -1,10 +1,10 @@
-import Image from "next/image";
-import pikachuLoading from "../../public/pikachu-loading.gif";
-import gastlyLoading from "../../public/gastly-loading.gif";
+import Image from "next/image"
+import pikachuLoading from "../../public/pikachu-loading.gif"
+import gastlyLoading from "../../public/gastly-loading.gif"
 
 interface LoadingPokemonProps {
-  load: "gastly" | "pikachu";
-  msg?: string;
+  load: "gastly" | "pikachu"
+  msg?: string
 }
 
 export const LoadingPokemon = ({ load, msg }: LoadingPokemonProps) => {
@@ -18,5 +18,5 @@ export const LoadingPokemon = ({ load, msg }: LoadingPokemonProps) => {
       />
       <p>{msg}</p>
     </div>
-  );
-};
+  )
+}
