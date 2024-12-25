@@ -45,10 +45,10 @@ export const PokemonFormsEvolutions = ({
               <h3>{forms.name}</h3>
 
               <div className="flex gap-2">
-                {formObj.pokemon_v2_pokemontypes.map((type) => {
+                {formObj.pokemon_v2_pokemontypes.map((type, index) => {
                   return (
                     <LabelTypes
-                      key={type.id}
+                      key={type.id + index}
                       name={type.pokemon_v2_type.name}
                     />
                   )

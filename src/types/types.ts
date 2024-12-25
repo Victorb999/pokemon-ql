@@ -33,6 +33,7 @@ export interface Extensions {
   code: string
 }
 export interface PokemonData {
+  errors: boolean
   data: PokemonPerfil
 }
 
