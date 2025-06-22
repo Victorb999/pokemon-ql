@@ -29,7 +29,7 @@ export default function RootLayout({
         <ReactQueryProvider>
           <body
             className={`${londrina.className} pattern-leave tracking-widest
-          bg-stone-950 text-stone-100 w-[100dvw] h-[100dvh]`}
+          bg-stone-950 text-stone-100 h-[100dvh]`}
           >
             <HeaderMenu />
             {children}

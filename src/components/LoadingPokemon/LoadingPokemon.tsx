@@ -9,14 +9,19 @@ interface LoadingPokemonProps {
 
 export const LoadingPokemon = ({ load, msg }: LoadingPokemonProps) => {
   return (
-    <div className="flex flex-col items-center justify-center p-4 gap-4 rounded h-[100dvh]">
-      <Image
-        src={load === "gastly" ? gastlyLoading : pikachuLoading}
-        alt="loading"
-        width={200}
-        height={200}
-      />
-      <p>{msg}</p>
+    <div className="flex flex-col items-center justify-center h-[100dvh]">
+      <div
+        className="p-4 gap-4 rounded bg-white border border-stone-300 
+      shadow-lg flex flex-col items-center justify-center"
+      >
+        <Image
+          src={load === "gastly" ? gastlyLoading : pikachuLoading}
+          alt="loading"
+          width={200}
+          height={200}
+        />
+        <p>{msg}</p>
+      </div>
     </div>
   )
 }

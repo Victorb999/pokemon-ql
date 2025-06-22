@@ -16,7 +16,7 @@ export default function Page({ params }: PageProps) {
 
   if (data) {
     return (
-      <div className="flex flex-col p-2 items-center gap-4">
+      <div className="flex flex-col items-center gap-4">
         <div className="flex items-center justify-center">
           <Image
             src={data.pokemon_v2_pokemonsprites[0].sprites.front_default}
