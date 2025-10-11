@@ -1,9 +1,9 @@
 "use client"
 import { useQuery } from "react-query"
 import { useAtom } from "jotai"
-import { requestPokemonListPerGeneration } from "../../../services/requestListPokemon"
-import { generationIdAtom, myStore } from "../../../store/store"
-import { SelectGeneration } from "../../../components/SelectGeneration/SelectGeneration"
+import { requestPokemonListPerType } from "../../../services/requestListPokemon"
+import { typeIdAtom } from "../../../store/store"
+import { SelectType } from "../../../components/SelectType/SelectType"
 import { ListPokemon } from "../../../containers/ListPokemon/ListPokemon"
 import { LoadingPokemon } from "../../../components/LoadingPokemon/LoadingPokemon"
 import { useEffect } from "react"
@@ -14,17 +14,17 @@ interface PageProps {
 }
 
 export default function Page({ params }: PageProps) {
-  const [generationId, setGenerationId] = useAtom(generationIdAtom)
+  const [typeId, settypeId] = useAtom(typeIdAtom)
 
   const { data, error, isLoading } = useQuery(
-    ["pokemonList", generationId],
-    () => requestPokemonListPerGeneration(generationId),
+    ["pokemonList", typeId],
+    () => requestPokemonListPerType(typeId),
     { retry: 0, refetchOnWindowFocus: false }
   )
 
   useEffect(() => {
-    params.id && setGenerationId(params.id[0])
-  }, [params.id, setGenerationId])
+    params.id && settypeId(params.id[0])
+  }, [params.id, settypeId])
   // Função para lidar com a seleção do <select>
 
   if (isLoading) return <LoadingPokemon load="pikachu" />
@@ -36,9 +36,9 @@ export default function Page({ params }: PageProps) {
 
   return (
     <div className="flex flex-col items-center p-4 gap-4">
-      <h1 className="text-3xl font-bold">Pokémon list per generation</h1>
+      <h1 className="text-3xl font-bold">Pokémon list per type</h1>
 
-      <SelectGeneration />
+      <SelectType />
       <ListPokemon data={data} />
     </div>
   )

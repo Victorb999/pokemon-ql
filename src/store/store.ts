@@ -1,5 +1,7 @@
-import { atom, createStore } from "jotai";
+import { atom, createStore } from "jotai"
 
-export const myStore = createStore();
+export const myStore = createStore()
 
-export const generationIdAtom = atom("1");
+export const generationIdAtom = atom("1")
+
+export const typeIdAtom = atom("1")

@@ -16,12 +16,12 @@ export const PokemonForms = ({ forms }: PokemonFormsProps) => {
     >
       <h2 className="text-2xl font-bold">Forms</h2>
       <div className="flex gap-2 flex-wrap justify-center items-center">
-        {forms.map((form) => {
+        {forms.map((form, index) => {
           const formObj = form.pokemon_v2_pokemonforms[0]
           return (
             <Link
               href={`/pokemon/${formObj.pokemon_id}`}
-              key={formObj.id}
+              key={formObj.id + index}
               className={`flex flex-col items-center 
               ${formObj.pokemon_v2_pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}
                 border-2 border-yellow-700 p-4 w-[200px] gap-2 overflow-hidden min-h-[300px]
@@ -45,10 +45,10 @@ export const PokemonForms = ({ forms }: PokemonFormsProps) => {
 
               <div className="flex gap-2">
                 {formObj.pokemon_v2_pokemon.pokemon_v2_pokemontypes.map(
-                  (type) => {
+                  (type, index) => {
                     return (
                       <LabelTypes
-                        key={type.id}
+                        key={type.id + index}
                         name={type.pokemon_v2_type.name}
                       />
                     )

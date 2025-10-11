@@ -19,6 +19,11 @@ export interface GenerationList {
   name: string
 }
 
+export interface TypeList {
+  id: string
+  name: string
+}
+
 export interface DataError {
   errors: Error[]
 }

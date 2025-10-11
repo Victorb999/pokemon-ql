@@ -18,13 +18,13 @@ export const PokemonFormsEvolutions = ({
     >
       <h2 className="text-2xl font-bold">Evolutions</h2>
       <div className="flex gap-2 flex-wrap justify-center items-center">
-        {evolutions.pokemon_v2_pokemonspecies.map((forms) => {
+        {evolutions.pokemon_v2_pokemonspecies.map((forms, index) => {
           //return <span key={forms.id}>{JSON.stringify(forms)}</span>
           const formObj = forms.pokemon_v2_pokemons[0]
           return (
             <Link
               href={`/pokemon/${forms.id}`}
-              key={formObj.id}
+              key={formObj.id + index}
               className={`flex flex-col items-center 
               ${formObj.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}
                 border-2 border-yellow-700 p-4 w-[200px] gap-2 overflow-hidden

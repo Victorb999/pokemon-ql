@@ -39,6 +39,7 @@ export const PokemonPerfil = ({
     <div
       className={`flex flex-col md:flex-row lg:flex-row 
       justify-center items-center
+      border-2 border-yellow-700  hover:border-amber-200 hover:shadow-lg
       p-4 gap-2 w-[90%] lg:w-[70%] xl:w-[60%] 2xl:w-[46%]
       ${types[0].pokemon_v2_type.name}
       bg-stone-900

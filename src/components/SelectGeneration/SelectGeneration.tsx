@@ -1,17 +1,16 @@
-import { useAtom } from "jotai";
-import { useQuery } from "react-query";
-import { generationIdAtom } from "../../store/store";
-import { requestListGeneration } from "../../services/requestListGeneration";
-import { GenerationList } from "../../types/types";
+import { useAtom } from "jotai"
+import { useQuery } from "react-query"
+import { generationIdAtom } from "../../store/store"
+import { requestListGeneration } from "../../services/requestListGeneration"
+import { GenerationList } from "../../types/types"
 
 interface ListGenerationProps {
-  data: { pokemon_v2_generation: GenerationList[] };
+  data: { pokemon_v2_generation: GenerationList[] }
 }
 
 export const SelectGeneration = () => {
-  const [generationId, setGenerationId] = useAtom(generationIdAtom);
-  const { data } = useQuery(["generationList"], () => requestListGeneration());
-  console.log("data", generationId);
+  const [generationId, setGenerationId] = useAtom(generationIdAtom)
+  const { data } = useQuery(["generationList"], () => requestListGeneration())
   return (
     <div className="flex gap-2 justify-center items-center">
       <label htmlFor="generation">Generation:</label>
@@ -30,5 +29,5 @@ export const SelectGeneration = () => {
           ))}
       </select>
     </div>
-  );
-};
+  )
+}

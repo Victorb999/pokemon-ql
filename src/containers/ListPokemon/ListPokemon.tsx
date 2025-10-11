@@ -3,6 +3,7 @@ import { PokemonList } from "../../types/types"
 import Hexagon from "../../public/pattern/hexagon7.svg"
 import Link from "next/link"
 import { LabelTypes } from "../../components/LabelType/LabelType"
+import { types } from "util"
 
 interface ListPokemonProps {
   data: { pokemon_v2_pokemon: PokemonList[] }
@@ -15,8 +16,9 @@ export const ListPokemon = ({ data }: ListPokemonProps) => {
         <div
           key={pokemon.id}
           className={`flex flex-col items-center bg-rose-900
+            ${pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}
             border-2 border-yellow-700 p-4 w-[128px] gap-2
-          hover:bg-rose-700 hover:border-amber-200 hover:shadow-lg pattern`}
+          hover:bg-rose-700 hover:border-amber-200 hover:shadow-lg pattern-negative`}
         >
           <Link href={`/pokemon/${pokemon.id}`} as={`/pokemon/${pokemon.id}`}>
             <h1 className="text-md font-bold capitalize">{pokemon.name}</h1>

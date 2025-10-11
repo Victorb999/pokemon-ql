@@ -15,6 +15,9 @@ export const HeaderMenu = () => {
       <Link href={"/generation"}>
         <h1 className="text-md font-bold">Generation</h1>
       </Link>
+      <Link href={"/type"}>
+        <h1 className="text-md font-bold">Type</h1>
+      </Link>
     </div>
   )
 }
