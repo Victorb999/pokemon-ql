@@ -957,6 +957,7 @@ export interface Icons6 {
 }
 
 export interface PokemonV2Pokemonstat {
+  base_stat: number
   id: number
   pokemon_v2_stat: PokemonV2Stat
 }

@@ -124,6 +124,14 @@ const listPokemonPerId = (id: string) => {
               name
             }
           }
+          pokemon_v2_pokemonstats {
+            base_stat
+            id
+            pokemon_v2_stat {
+              name
+              id
+            }
+          }
           order
         }
       }

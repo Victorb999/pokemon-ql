@@ -1,10 +1,12 @@
 import {
   PokemonV2Pokemonevolution,
   PokemonV2Pokemontype,
+  PokemonV2Pokemonstat,
 } from "@/src/types/types"
 import Image from "next/image"
-import { LabelTypes } from "../../components/LabelType/LabelType"
-import Link from "next/link"
+import { useState } from "react"
+import { PokemonAbout } from "../../components/PokemonAbout/PokemonAbout"
+import { PokemonStats } from "../../components/PokemonStats/PokemonStats"
 
 interface PokemonPerfilProps {
   urlImg: string
@@ -19,6 +21,7 @@ interface PokemonPerfilProps {
   isMythical?: boolean
   isLegendary?: boolean
   types: PokemonV2Pokemontype[]
+  stats: PokemonV2Pokemonstat[]
 }
 
 export const PokemonPerfil = ({
@@ -34,7 +37,10 @@ export const PokemonPerfil = ({
   isLegendary,
   generationId,
   types,
+  stats,
 }: PokemonPerfilProps) => {
+  const [activeTab, setActiveTab] = useState<"about" | "stats">("about")
+
   return (
     <div
       className={`flex flex-col md:flex-row lg:flex-row 
@@ -48,50 +54,49 @@ export const PokemonPerfil = ({
       <div className="flex items-center justify-center">
         <Image src={urlImg} alt={name} width={300} height={300} />
       </div>
-      <div className="flex flex-col gap-2 max-w-full md:max-w-[400px]">
-        <h1 className="text-2xl font-bold">{title}</h1>
-        <p>{description.replace("", "\n")}</p>
+      <div className="flex flex-col gap-2 max-w-full md:max-w-[400px] w-full">
+        <div className="flex gap-4 border-b border-stone-600 pb-2 mb-2">
+          <button
+            onClick={() => setActiveTab("about")}
+            className={`text-lg font-bold pb-1 ${
+              activeTab === "about"
 
-        <div>
-          {isBaby && <span>Baby</span>}
-          {isLegendary && <span>Legendary</span>}
-          {isMythical && <span>Mythical</span>}
+                ? "text-stone-100 border-b-2 border-stone-200"
+                : "text-stone-100 hover:text-stone-200"
+            }`}
+          >
+            About
+          </button>
+          <button
+            onClick={() => setActiveTab("stats")}
+            className={`text-lg font-bold pb-1 ${
+              activeTab === "stats"
+                ? "text-stone-100 border-b-2 border-stone-200"
+                : " hover:text-stone-200"
+            }`}
+          >
+            Stats
+          </button>
         </div>
 
-        <div className="flex flex-col border-t py-2 border-stone-600">
-          <div className="flex flex-col">
-            {evolutions.map((evolution) => (
-              <>
-                <span className="font-bold">Evolution:</span>
-                <span key={evolution.id} className="text-md">
-                  {evolution.pokemon_v2_evolutiontrigger.name}{" "}
-                  {evolution.min_level}
-                </span>
-              </>
-            ))}
-          </div>
+        {activeTab === "about" && (
+          <PokemonAbout
+            title={title}
+            description={description}
+            generation={generation}
+            generationId={generationId}
+            evolutions={evolutions}
+            shape={shape}
+            isBaby={isBaby}
+            isMythical={isMythical}
+            isLegendary={isLegendary}
+            types={types}
+          />
+        )}
 
-          <div className="flex flex-col">
-            <span className="font-bold">Shape:</span>
-            <span>{shape}</span>
-          </div>
-        </div>
-
-        <div className="flex flex-col border-y py-2 border-stone-600">
-          <span className="font-bold">Type:</span>
-          <div className="flex gap-2 mt-2">
-            {types.map((type) => (
-              <LabelTypes key={type.id} name={type.pokemon_v2_type.name} />
-            ))}
-          </div>
-        </div>
-
-        <Link
-          href={`/generation/${generationId}`}
-          className="text-xl uppercase rounded bg-green-300 w-fit px-2 text-stone-900"
-        >
-          {generation}
-        </Link>
+        {activeTab === "stats" && (
+          <PokemonStats stats={stats} color={types[0].pokemon_v2_type.name} />
+        )}
       </div>
     </div>
   )

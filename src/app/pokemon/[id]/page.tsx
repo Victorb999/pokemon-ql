@@ -50,6 +50,7 @@ export default function Page({ params }: PageProps) {
           isLegendary={data.pokemon_v2_pokemonspecy.is_legendary}
           types={data.pokemon_v2_pokemontypes}
           generationId={data.pokemon_v2_pokemonspecy.pokemon_v2_generation.id}
+          stats={data.pokemon_v2_pokemonstats}
         />
 
         <PokemonForms
