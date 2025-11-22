@@ -48,6 +48,15 @@ const listPokemonPerType = (id: string) => {
         generation_id
       }
     }
+    pokemon_v2_typeefficacy(
+    where: {pokemon_v2_type: {id: {_eq: ${id}}}, _not: {damage_factor: {_eq: 100}}}
+  ) {
+    damage_factor
+    target_type_id
+    pokemonV2TypeByTargetTypeId {
+      name
+    }
+  }
   }
 `
 }

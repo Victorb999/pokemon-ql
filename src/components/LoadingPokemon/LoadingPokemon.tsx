@@ -20,7 +20,7 @@ export const LoadingPokemon = ({ load, msg }: LoadingPokemonProps) => {
           width={200}
           height={200}
         />
-        <p>{msg}</p>
+        <p className="text-stone-500">{msg}</p>
       </div>
     </div>
   )

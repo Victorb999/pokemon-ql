@@ -6,6 +6,7 @@ import { typeIdAtom } from "../../../store/store"
 import { SelectType } from "../../../components/SelectType/SelectType"
 import { ListPokemon } from "../../../containers/ListPokemon/ListPokemon"
 import { LoadingPokemon } from "../../../components/LoadingPokemon/LoadingPokemon"
+import { TypeEfficacy } from "../../../components/TypeEfficacy/TypeEfficacy"
 import { useEffect } from "react"
 //https://beta.pokeapi.co/graphql/console/
 
@@ -39,6 +40,9 @@ export default function Page({ params }: PageProps) {
       <h1 className="text-3xl font-bold">Pokémon list per type</h1>
 
       <SelectType />
+      {data && data.pokemon_v2_typeefficacy && (
+        <TypeEfficacy efficacy={data.pokemon_v2_typeefficacy} />
+      )}
       <ListPokemon data={data} />
     </div>
   )
