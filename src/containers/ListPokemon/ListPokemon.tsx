@@ -18,7 +18,8 @@ export const ListPokemon = ({ data }: ListPokemonProps) => {
           className={`flex flex-col items-center bg-rose-900
             ${pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}
             border-2 border-yellow-700 p-4 w-[128px] gap-2
-          hover:bg-rose-700 hover:border-amber-200 hover:shadow-lg pattern-negative`}
+            hover:opacity-80
+          hover:border-amber-200 hover:shadow-lg pattern-negative`}
         >
           <Link href={`/pokemon/${pokemon.id}`} as={`/pokemon/${pokemon.id}`}>
             <h1 className="text-md font-bold capitalize">{pokemon.name}</h1>

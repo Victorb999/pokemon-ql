@@ -22,11 +22,16 @@ export const SelectType = () => {
         value={typeId}
       >
         {data &&
-          data.pokemon_v2_type.map((type: TypeList) => (
+        <>
+        <option value="" disabled>
+              Select a type
+            </option>
+          {data.pokemon_v2_type.map((type: TypeList) => (
             <option key={type.id} value={type.id}>
               {type.name}
             </option>
           ))}
+          </>}
       </select>
     </div>
   )

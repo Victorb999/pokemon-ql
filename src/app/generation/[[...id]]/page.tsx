@@ -19,7 +19,7 @@ export default function Page({ params }: PageProps) {
   const { data, error, isLoading } = useQuery(
     ["pokemonList", generationId],
     () => requestPokemonListPerGeneration(generationId),
-    { retry: 0, refetchOnWindowFocus: false }
+    { retry: 0, refetchOnWindowFocus: false, enabled: generationId !== "" }
   )
 
   useEffect(() => {
@@ -34,12 +34,16 @@ export default function Page({ params }: PageProps) {
     return <LoadingPokemon load="gastly" msg={errorMessage} />
   }
 
+  const renderList = () => {
+    if(generationId === "") return null
+    return <ListPokemon data={data} />
+  }
+
   return (
     <div className="flex flex-col items-center p-4 gap-4">
       <h1 className="text-3xl font-bold">Pokémon list per generation</h1>
-
       <SelectGeneration />
-      <ListPokemon data={data} />
+      {renderList()}
     </div>
   )
 }

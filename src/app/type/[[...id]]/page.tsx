@@ -20,7 +20,7 @@ export default function Page({ params }: PageProps) {
   const { data, error, isLoading } = useQuery(
     ["pokemonList", typeId],
     () => requestPokemonListPerType(typeId),
-    { retry: 0, refetchOnWindowFocus: false }
+    { retry: 0, refetchOnWindowFocus: false ,enabled: typeId !== ""}
   )
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function Page({ params }: PageProps) {
       {data && data.pokemon_v2_typeefficacy && (
         <TypeEfficacy efficacy={data.pokemon_v2_typeefficacy} />
       )}
-      <ListPokemon data={data} />
+        {typeId !== "" && <ListPokemon data={data} />}
     </div>
   )
 }

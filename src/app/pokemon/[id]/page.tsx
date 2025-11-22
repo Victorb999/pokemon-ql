@@ -52,14 +52,17 @@ export default function Page({ params }: PageProps) {
           generationId={data.pokemon_v2_pokemonspecy.pokemon_v2_generation.id}
           stats={data.pokemon_v2_pokemonstats}
         />
+        { data.pokemon_v2_pokemonspecy.pokemon_v2_pokemons.length > 1 && (
+          <PokemonForms
+            forms={data.pokemon_v2_pokemonspecy.pokemon_v2_pokemons}
+          />
+        )}
 
-        <PokemonForms
-          forms={data.pokemon_v2_pokemonspecy.pokemon_v2_pokemons}
-        />
-
-        <PokemonFormsEvolutions
-          evolutions={data.pokemon_v2_pokemonspecy.pokemon_v2_evolutionchain}
-        />
+        {data.pokemon_v2_pokemonspecy.pokemon_v2_evolutionchain.pokemon_v2_pokemonspecies.length > 1  && (
+          <PokemonFormsEvolutions
+            evolutions={data.pokemon_v2_pokemonspecy.pokemon_v2_evolutionchain}
+          />
+        )}
       </div>
     )
   }

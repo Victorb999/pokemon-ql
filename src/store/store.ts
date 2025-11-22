@@ -2,6 +2,6 @@ import { atom, createStore } from "jotai"
 
 export const myStore = createStore()
 
-export const generationIdAtom = atom("1")
+export const generationIdAtom = atom("")
 
-export const typeIdAtom = atom("1")
+export const typeIdAtom = atom("")

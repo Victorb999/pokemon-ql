@@ -21,12 +21,18 @@ export const SelectGeneration = () => {
         onChange={(e) => setGenerationId(e.target.value)}
         value={generationId}
       >
-        {data &&
-          data.pokemon_v2_generation.map((generation: GenerationList) => (
-            <option key={generation.id} value={generation.id}>
-              {generation.name}
+        {data && (
+          <>
+            <option value="" disabled>
+              Select a generation
             </option>
-          ))}
+            {data.pokemon_v2_generation.map((generation: GenerationList) => (
+              <option key={generation.id} value={generation.id}>
+                {generation.name}
+              </option>
+            ))}
+          </>
+        )}
       </select>
     </div>
   )
