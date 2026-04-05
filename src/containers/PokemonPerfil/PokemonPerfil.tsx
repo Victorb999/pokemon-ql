@@ -2,6 +2,7 @@ import {
   PokemonV2Pokemonevolution,
   PokemonV2Pokemontype,
   PokemonV2Pokemonstat,
+  PokemonV2Pokemonability,
 } from "@/src/types/types"
 import Image from "next/image"
 import { useState } from "react"
@@ -23,6 +24,7 @@ interface PokemonPerfilProps {
   isLegendary?: boolean
   types: PokemonV2Pokemontype[]
   stats: PokemonV2Pokemonstat[]
+  abilities: PokemonV2Pokemonability[]
 }
 
 export const PokemonPerfil = ({
@@ -39,6 +41,7 @@ export const PokemonPerfil = ({
   generationId,
   types,
   stats,
+  abilities,
 }: PokemonPerfilProps) => {
   const [activeTab, setActiveTab] = useState<"about" | "stats" | "radar">("about")
 
@@ -97,6 +100,7 @@ export const PokemonPerfil = ({
             isMythical={isMythical}
             isLegendary={isLegendary}
             types={types}
+            abilities={abilities}
           />
         )}
 

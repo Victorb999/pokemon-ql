@@ -6,6 +6,7 @@ import { PokemonPerfil } from "@/src/containers/PokemonPerfil/PokemonPerfil"
 import { PokemonForms } from "@/src/containers/PokemonForms/PokemonForms"
 import { PokemonFormsEvolutions } from "@/src/containers/PokemonFormsEvolutions/PokemonFormsEvolutions"
 import { PokemonMoves } from "@/src/components/PokemonMoves/PokemonMoves"
+import { LoadingPokemon } from "@/src/components/LoadingPokemon/LoadingPokemon"
 interface PageProps {
   params: { id: string }
 }
@@ -16,16 +17,29 @@ export default function Page({ params }: PageProps) {
     queryFn: () => requestPokemon(params.id)
   })
 
+  if (isLoading) return <LoadingPokemon load="pikachu" />
+  if (error) {
+    const errorMessage =
+      (error as Error)?.message || "An unknown error occurred"
+    return <LoadingPokemon load="gastly" msg={errorMessage} />
+  }
+
   if (data) {
+    const sprites = data.pokemon_v2_pokemonsprites?.[0]?.sprites
+    const species = data.pokemon_v2_pokemonspecy
+    const types = data.pokemon_v2_pokemontypes
+
     return (
       <div className="flex flex-col items-center gap-4">
         <div className="flex items-center justify-center">
-          <Image
-            src={data.pokemon_v2_pokemonsprites[0].sprites.front_default}
-            alt={data.name}
-            width={100}
-            height={100}
-          />
+          {sprites?.front_default && (
+            <Image
+              src={sprites.front_default}
+              alt={data.name}
+              width={100}
+              height={100}
+            />
+          )}
           <h1 className="text-3xl font-bold capitalize">
             #{data.id} {data.name}
           </h1>
@@ -33,43 +47,46 @@ export default function Page({ params }: PageProps) {
 
         <PokemonPerfil
           urlImg={
-            data.pokemon_v2_pokemonsprites[0].sprites.other["official-artwork"]
-              .front_default
+            sprites?.other?.["official-artwork"]?.front_default ||
+            sprites?.front_default ||
+            ""
           }
           name={data.name}
           title={
-            data.pokemon_v2_pokemonspecy.pokemon_v2_pokemonspeciesnames[0].genus
+            species?.pokemon_v2_pokemonspeciesnames?.[0]?.genus || "Pokemon"
           }
-          generation={data.pokemon_v2_pokemonspecy.pokemon_v2_generation.name}
+          generation={species?.pokemon_v2_generation?.name || "Unknown"}
           description={
-            data.pokemon_v2_pokemonspecy.pokemon_v2_pokemonspeciesflavortexts[0]
-              .flavor_text
+            species?.pokemon_v2_pokemonspeciesflavortexts?.[0]?.flavor_text ||
+            "No description available."
           }
-          evolutions={data.pokemon_v2_pokemonspecy.pokemon_v2_pokemonevolutions}
-          shape={data.pokemon_v2_pokemonspecy.pokemon_v2_pokemonshape.name}
-          isBaby={data.pokemon_v2_pokemonspecy.is_baby}
-          isMythical={data.pokemon_v2_pokemonspecy.is_mythical}
-          isLegendary={data.pokemon_v2_pokemonspecy.is_legendary}
-          types={data.pokemon_v2_pokemontypes}
-          generationId={data.pokemon_v2_pokemonspecy.pokemon_v2_generation.id}
-          stats={data.pokemon_v2_pokemonstats}
+          evolutions={species?.pokemon_v2_pokemonevolutions || []}
+          shape={species?.pokemon_v2_pokemonshape?.name || "Unknown"}
+          isBaby={species?.is_baby}
+          isMythical={species?.is_mythical}
+          isLegendary={species?.is_legendary}
+          types={types || []}
+          generationId={species?.pokemon_v2_generation?.id || 0}
+          stats={data.pokemon_v2_pokemonstats || []}
+          abilities={data.pokemon_v2_pokemonabilities || []}
         />
-        {data.pokemon_v2_pokemonspecy.pokemon_v2_pokemons.length > 1 && (
-          <PokemonForms
-            forms={data.pokemon_v2_pokemonspecy.pokemon_v2_pokemons}
-          />
+
+        {species?.pokemon_v2_pokemons?.length > 1 && (
+          <PokemonForms forms={species.pokemon_v2_pokemons} />
         )}
 
-        {data.pokemon_v2_pokemonspecy.pokemon_v2_evolutionchain.pokemon_v2_pokemonspecies.length > 1 && (
+        {species?.pokemon_v2_evolutionchain?.pokemon_v2_pokemonspecies?.length > 1 && (
           <PokemonFormsEvolutions
-            evolutions={data.pokemon_v2_pokemonspecy.pokemon_v2_evolutionchain}
+            evolutions={species.pokemon_v2_evolutionchain}
           />
         )}
 
-        <PokemonMoves
-          moves={data.pokemon_v2_pokemonmoves}
-          color={data.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}
-        />
+        {types?.[0] && (
+          <PokemonMoves
+            moves={data.pokemon_v2_pokemonmoves || []}
+            color={types[0].pokemon_v2_type.name}
+          />
+        )}
       </div>
     )
   }

@@ -16,6 +16,9 @@ const pokemonQuery = graphql(`
         ability_id
         pokemon_v2_ability {
           name
+          pokemon_v2_abilityflavortexts(where: { language_id: { _eq: 9 } }, limit: 1) {
+            flavor_text
+          }
         }
       }
       pokemon_v2_pokemonmoves(distinct_on: move_id) {

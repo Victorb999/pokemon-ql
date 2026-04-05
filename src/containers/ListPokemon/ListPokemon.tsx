@@ -3,7 +3,6 @@ import { PokemonList } from "../../types/types"
 import Hexagon from "../../public/pattern/hexagon7.svg"
 import Link from "next/link"
 import { LabelTypes } from "../../components/LabelType/LabelType"
-import { types } from "util"
 
 interface ListPokemonProps {
   data: { pokemon_v2_pokemon: PokemonList[] }

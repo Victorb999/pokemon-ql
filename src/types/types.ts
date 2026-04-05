@@ -59,6 +59,9 @@ export interface PokemonV2Pokemonability {
 
 export interface PokemonV2Ability {
   name: string
+  pokemon_v2_abilityflavortexts: {
+    flavor_text: string
+  }[]
 }
 
 export interface PokemonV2Pokemonmfe {

@@ -1,6 +1,7 @@
 import {
   PokemonV2Pokemonevolution,
   PokemonV2Pokemontype,
+  PokemonV2Pokemonability,
 } from "@/src/types/types"
 import { LabelTypes } from "../../components/LabelType/LabelType"
 import Link from "next/link"
@@ -16,6 +17,7 @@ interface PokemonAboutProps {
   isMythical?: boolean
   isLegendary?: boolean
   types: PokemonV2Pokemontype[]
+  abilities: PokemonV2Pokemonability[]
 }
 
 export const PokemonAbout = ({
@@ -29,6 +31,7 @@ export const PokemonAbout = ({
   isMythical,
   isLegendary,
   types,
+  abilities,
 }: PokemonAboutProps) => {
   return (
     <div className="flex flex-col gap-2 max-w-full md:max-w-[400px]">
@@ -60,11 +63,30 @@ export const PokemonAbout = ({
         </div>
       </div>
 
-      <div className="flex flex-col border-y py-2 theme-border">
+      <div className="flex flex-col border-y py-2 theme-border mb-4">
         <span className="font-bold">Type:</span>
         <div className="flex gap-2 mt-2">
           {types.map((type) => (
             <LabelTypes key={type.id} name={type.pokemon_v2_type.name} id={type.pokemon_v2_type.id} />
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-col mb-4">
+        <span className="font-bold">Abilities:</span>
+        <div className="flex flex-wrap gap-2 mt-1">
+          {abilities.map((ability) => (
+            <div key={ability.id} className="flex flex-col group relative">
+              <span className={`text-sm font-bold uppercase px-2 py-1 rounded theme-bg-elevated border theme-border ${ability.is_hidden ? 'italic opacity-80' : ''}`}>
+                {ability.pokemon_v2_ability.name.replace(/-/g, ' ')}
+                {ability.is_hidden && <span className="ml-1 text-[10px] opacity-60">(Hidden)</span>}
+              </span>
+              {ability.pokemon_v2_ability.pokemon_v2_abilityflavortexts[0] && (
+                <div className="absolute bottom-full left-0 mb-2 w-48 p-2 rounded bg-stone-800 text-[10px] text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 shadow-xl border border-stone-700">
+                  {ability.pokemon_v2_ability.pokemon_v2_abilityflavortexts[0].flavor_text.replace(/\f/g, ' ')}
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </div>
