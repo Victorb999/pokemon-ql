@@ -18,13 +18,20 @@ const pokemonQuery = graphql(`
           name
         }
       }
-      pokemon_v2_pokemonmoves {
+      pokemon_v2_pokemonmoves(distinct_on: move_id) {
         move_id
         pokemon_v2_move {
           accuracy
           move_damage_class_id
           name
-          move_effect_chance
+          power
+          pp
+          pokemon_v2_type {
+            name
+          }
+          pokemon_v2_movedamageclass {
+            name
+          }
         }
       }
       pokemon_v2_pokemonspecy {

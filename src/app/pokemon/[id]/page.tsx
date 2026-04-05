@@ -5,6 +5,7 @@ import { requestPokemon } from "@/src/services/requestPokemon"
 import { PokemonPerfil } from "@/src/containers/PokemonPerfil/PokemonPerfil"
 import { PokemonForms } from "@/src/containers/PokemonForms/PokemonForms"
 import { PokemonFormsEvolutions } from "@/src/containers/PokemonFormsEvolutions/PokemonFormsEvolutions"
+import { PokemonMoves } from "@/src/components/PokemonMoves/PokemonMoves"
 interface PageProps {
   params: { id: string }
 }
@@ -64,6 +65,11 @@ export default function Page({ params }: PageProps) {
             evolutions={data.pokemon_v2_pokemonspecy.pokemon_v2_evolutionchain}
           />
         )}
+
+        <PokemonMoves
+          moves={data.pokemon_v2_pokemonmoves}
+          color={data.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}
+        />
       </div>
     )
   }

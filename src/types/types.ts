@@ -94,7 +94,14 @@ export interface PokemonV2Move {
   accuracy?: number
   move_damage_class_id: number
   name: string
-  move_effect_chance?: number
+  power?: number
+  pp?: number
+  pokemon_v2_type: {
+    name: string
+  }
+  pokemon_v2_movedamageclass: {
+    name: string
+  }
 }
 
 export interface PokemonV2Pokemonspecy {

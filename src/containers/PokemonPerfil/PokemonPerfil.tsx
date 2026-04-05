@@ -61,8 +61,8 @@ export const PokemonPerfil = ({
             onClick={() => setActiveTab("about")}
             className={`text-lg font-bold pb-1 ${activeTab === "about"
 
-                ? "text-stone-100 border-b-2 border-stone-200"
-                : "text-stone-100 hover:text-stone-200"
+              ? "text-stone-100 border-b-2 border-stone-200"
+              : "text-stone-100 hover:text-stone-200"
               }`}
           >
             About
@@ -70,8 +70,8 @@ export const PokemonPerfil = ({
           <button
             onClick={() => setActiveTab("stats")}
             className={`text-lg font-bold pb-1 ${activeTab === "stats"
-                ? "text-stone-100 border-b-2 border-stone-200"
-                : " hover:text-stone-200"
+              ? "text-stone-100 border-b-2 border-stone-200"
+              : " hover:text-stone-200"
               }`}
           >
             Stats
@@ -79,8 +79,8 @@ export const PokemonPerfil = ({
           <button
             onClick={() => setActiveTab("radar")}
             className={`text-lg font-bold pb-1 ${activeTab === "radar"
-                ? "text-stone-100 border-b-2 border-stone-200"
-                : " hover:text-stone-200"
+              ? "text-stone-100 border-b-2 border-stone-200"
+              : " hover:text-stone-200"
               }`}
           >
             Radar
