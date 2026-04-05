@@ -14,8 +14,8 @@ const londrina = Londrina_Solid({
 })
 
 export const metadata: Metadata = {
-  title: "Pokemon APP",
-  description: "Pokemon APP",
+  title: "PokeAgenda",
+  description: "PokeAgenda",
 }
 
 export default function RootLayout({
