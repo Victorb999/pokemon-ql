@@ -15,15 +15,15 @@ export const ListPokemon = ({ data }: ListPokemonProps) => {
       {data.pokemon_v2_pokemon.map((pokemon: PokemonList) => (
         <div
           key={pokemon.id}
-          className={`flex flex-col items-center bg-rose-900
-            ${pokemon.pokemon_v2_pokemontypes?.[0]?.pokemon_v2_type.name}
+          className={`flex flex-col items-center
+            type-${pokemon.pokemon_v2_pokemontypes?.[0]?.pokemon_v2_type.name || 'normal'}
             border-2 border-yellow-700 p-4 w-[128px] gap-2
             hover:opacity-80
           hover:border-amber-200 hover:shadow-lg pattern-negative`}
         >
           <Link href={`/pokemon/${pokemon.id}`} as={`/pokemon/${pokemon.id}`}>
-            <h1 className="text-md font-bold capitalize">{pokemon.name}</h1>
-            <h2 className="text-stone-900 font-bold"># {pokemon.id}</h2>
+            <h1 className="text-md font-bold capitalize text-stone-100">{pokemon.name}</h1>
+            <h2 className="text-stone-200 font-bold text-xs"># {pokemon.id}</h2>
 
             {pokemon.pokemon_v2_pokemonsprites[0].sprites.front_default && (
               <Image

@@ -23,11 +23,11 @@ export const PokemonForms = ({ forms }: PokemonFormsProps) => {
               href={`/pokemon/${formObj.pokemon_id}`}
               key={formObj.id + index}
               className={`flex flex-col items-center 
-              ${formObj.pokemon_v2_pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}
+              type-${formObj.pokemon_v2_pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}
                 border-2 border-yellow-700 p-4 w-[200px] gap-2 overflow-hidden min-h-[300px]
                 hover:border-amber-200 hover:shadow-lg pattern-negative`}
             >
-              <span>#{formObj.pokemon_id}</span>
+              <span className="text-stone-200 font-bold">#{formObj.pokemon_id}</span>
               {formObj.pokemon_v2_pokemon.pokemon_v2_pokemonsprites[0].sprites
                 .front_default && (
                   <Image
@@ -41,7 +41,7 @@ export const PokemonForms = ({ forms }: PokemonFormsProps) => {
                   />
                 )}
 
-              <h3>{formObj.name}</h3>
+              <h3 className="text-stone-100 font-bold capitalize">{formObj.name}</h3>
 
               <div className="flex gap-2">
                 {formObj.pokemon_v2_pokemon.pokemon_v2_pokemontypes.map(

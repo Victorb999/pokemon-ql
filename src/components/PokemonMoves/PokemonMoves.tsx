@@ -1,6 +1,7 @@
 "use client"
 import { PokemonV2Pokemonmfe } from "@/src/types/types"
 import { useState } from "react"
+import { LabelTypes } from "../LabelType/LabelType"
 
 interface PokemonMovesProps {
     moves: PokemonV2Pokemonmfe[]
@@ -28,7 +29,7 @@ export const PokemonMoves = ({ moves, color }: PokemonMovesProps) => {
                             className={`text-xs uppercase font-bold 
                             hover:bg-stone-500 text-stone-700 px-3 py-1.5 
                             rounded-full transition-colors cursor-pointer
-                             ${moveData.pokemon_v2_move.pokemon_v2_type.name}`}
+                            type-${moveData.pokemon_v2_move.pokemon_v2_type.name}`}
                         >
                             {move.name.replace(/-/g, " ")}
                         </button>
@@ -59,9 +60,7 @@ export const PokemonMoves = ({ moves, color }: PokemonMovesProps) => {
                         <div className="flex justify-around theme-bg-elevated rounded p-3 gap-4">
                             <div className="flex flex-col items-center gap-1">
                                 <span className="text-[10px] theme-text-muted uppercase tracking-widest">Type</span>
-                                <span className={`text-sm font-bold uppercase px-2 py-1 rounded theme-bg-muted theme-text ${selectedMove.pokemon_v2_move.pokemon_v2_type.name}`}>
-                                    {selectedMove.pokemon_v2_move.pokemon_v2_type.name}
-                                </span>
+                                <LabelTypes name={selectedMove.pokemon_v2_move.pokemon_v2_type.name} upper />
                             </div>
                             <div className="flex flex-col items-center gap-1">
                                 <span className="text-[10px] theme-text-muted uppercase tracking-widest">Category</span>

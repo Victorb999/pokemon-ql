@@ -18,7 +18,7 @@ export const PokemonStats = ({ stats, color }: PokemonStatsProps) => {
             </div>
             <div className="w-full theme-bg-muted rounded-full h-2.5">
               <div
-                className={`${color} h-2.5 rounded-full`}
+                className={`type-${color} h-2.5 rounded-full`}
                 style={{ width: `${(stat.base_stat / 250) * 100}%` }}
               ></div>
             </div>
