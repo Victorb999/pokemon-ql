@@ -17,7 +17,7 @@ export const SelectGeneration = () => {
       <select
         name="generation"
         id="generation"
-        className="bg-stone-800 p-2 rounded uppercase"
+        className="theme-bg-elevated p-2 rounded uppercase"
         onChange={(e) => setGenerationId(e.target.value)}
         value={generationId}
       >

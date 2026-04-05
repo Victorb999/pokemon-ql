@@ -25,7 +25,10 @@ export const PokemonMoves = ({ moves, color }: PokemonMovesProps) => {
                         <button
                             key={moveData.move_id}
                             onClick={() => setSelectedMove(moveData)}
-                            className="text-xs uppercase font-bold bg-stone-700 hover:bg-stone-500 text-stone-200 px-3 py-1.5 rounded-full transition-colors cursor-pointer"
+                            className={`text-xs uppercase font-bold 
+                            hover:bg-stone-500 text-stone-700 px-3 py-1.5 
+                            rounded-full transition-colors cursor-pointer
+                             ${moveData.pokemon_v2_move.pokemon_v2_type.name}`}
                         >
                             {move.name.replace(/-/g, " ")}
                         </button>
@@ -39,7 +42,7 @@ export const PokemonMoves = ({ moves, color }: PokemonMovesProps) => {
                     onClick={() => setSelectedMove(null)}
                 >
                     <div
-                        className={`bg-stone-900 rounded-lg max-w-sm w-full p-6 shadow-2xl border-2 border-stone-700 relative flex flex-col gap-5`}
+                        className={`theme-bg-surface rounded-lg max-w-sm w-full p-6 shadow-2xl border-2 theme-border relative flex flex-col gap-5`}
                         onClick={(e) => e.stopPropagation()}
                     >
                         <button
@@ -49,46 +52,53 @@ export const PokemonMoves = ({ moves, color }: PokemonMovesProps) => {
                             &times;
                         </button>
 
-                        <h3 className="text-2xl font-black capitalize border-b-2 border-stone-700 pb-3">
+                        <h3 className="text-2xl font-black  capitalize border-b-2 theme-border pb-3">
                             {selectedMove.pokemon_v2_move.name.replace(/-/g, " ")}
                         </h3>
 
-                        <div className="flex justify-around bg-stone-800 rounded p-3 gap-4">
+                        <div className="flex justify-around theme-bg-elevated rounded p-3 gap-4">
                             <div className="flex flex-col items-center gap-1">
-                                <span className="text-[10px] text-stone-400 uppercase tracking-widest">Type</span>
-                                <span className={`text-sm font-bold uppercase px-2 py-1 rounded bg-stone-700 text-stone-900 ${selectedMove.pokemon_v2_move.pokemon_v2_type.name}`}>
+                                <span className="text-[10px] theme-text-muted uppercase tracking-widest">Type</span>
+                                <span className={`text-sm font-bold uppercase px-2 py-1 rounded theme-bg-muted theme-text ${selectedMove.pokemon_v2_move.pokemon_v2_type.name}`}>
                                     {selectedMove.pokemon_v2_move.pokemon_v2_type.name}
                                 </span>
                             </div>
                             <div className="flex flex-col items-center gap-1">
-                                <span className="text-[10px] text-stone-400 uppercase tracking-widest">Category</span>
-                                <span className="text-sm font-bold uppercase px-2 py-1 rounded bg-stone-700 text-stone-200">
+                                <span className="text-[10px] theme-text-muted uppercase tracking-widest">Category</span>
+                                <span className="text-sm font-bold uppercase px-2 py-1 rounded theme-bg-muted theme-text">
                                     {selectedMove.pokemon_v2_move.pokemon_v2_movedamageclass.name}
                                 </span>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-3 gap-3">
-                            <div className="flex flex-col items-center bg-stone-800 p-3 rounded">
-                                <span className="text-[10px] text-stone-400 uppercase tracking-widest mb-1">Power</span>
+                            <div className="flex flex-col items-center theme-bg-elevated p-3 rounded">
+                                <span className="text-[10px] theme-text-muted uppercase tracking-widest mb-1">Power</span>
                                 <span className="font-black text-xl">
                                     {selectedMove.pokemon_v2_move.power ?? "—"}
                                 </span>
                             </div>
-                            <div className="flex flex-col items-center bg-stone-800 p-3 rounded">
-                                <span className="text-[10px] text-stone-400 uppercase tracking-widest mb-1">Accuracy</span>
+                            <div className="flex flex-col items-center theme-bg-elevated p-3 rounded">
+                                <span className="text-[10px] theme-text-muted uppercase tracking-widest mb-1">Accuracy</span>
                                 <span className="font-black text-xl">
                                     {selectedMove.pokemon_v2_move.accuracy != null
                                         ? `${selectedMove.pokemon_v2_move.accuracy}%`
                                         : "—"}
                                 </span>
                             </div>
-                            <div className="flex flex-col items-center bg-stone-800 p-3 rounded">
-                                <span className="text-[10px] text-stone-400 uppercase tracking-widest mb-1">PP</span>
+                            <div className="flex flex-col items-center theme-bg-elevated p-3 rounded">
+                                <span className="text-[10px] theme-text-muted uppercase tracking-widest mb-1">PP</span>
                                 <span className="font-black text-xl">
                                     {selectedMove.pokemon_v2_move.pp ?? "—"}
                                 </span>
                             </div>
+                        </div>
+                        <div className="theme-bg-elevated p-3 rounded">
+                            <p className="text-sm theme-text-muted leading-relaxed italic">
+                                {selectedMove.pokemon_v2_move.pokemon_v2_moveflavortexts[0]
+                                    ?.flavor_text.replace(/\f/g, " ") ||
+                                    "No description available."}
+                            </p>
                         </div>
                     </div>
                 </div>

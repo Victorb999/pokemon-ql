@@ -41,7 +41,7 @@ export const PokemonAbout = ({
         {isMythical && <span>Mythical</span>}
       </div>
 
-      <div className="flex flex-col border-t py-2 border-stone-600">
+      <div className="flex flex-col border-t py-2 theme-border">
         <div className="flex flex-col">
           {evolutions.map((evolution) => (
             <div key={evolution.id}>
@@ -60,7 +60,7 @@ export const PokemonAbout = ({
         </div>
       </div>
 
-      <div className="flex flex-col border-y py-2 border-stone-600">
+      <div className="flex flex-col border-y py-2 theme-border">
         <span className="font-bold">Type:</span>
         <div className="flex gap-2 mt-2">
           {types.map((type) => (

@@ -17,7 +17,7 @@ export const SelectType = () => {
       <select
         name="type"
         id="type"
-        className="bg-stone-800 p-2 rounded uppercase"
+        className="theme-bg-elevated p-2 rounded uppercase"
         onChange={(e) => setTypeId(e.target.value)}
         value={typeId}
       >

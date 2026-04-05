@@ -102,6 +102,9 @@ export interface PokemonV2Move {
   pokemon_v2_movedamageclass: {
     name: string
   }
+  pokemon_v2_moveflavortexts: {
+    flavor_text: string
+  }[]
 }
 
 export interface PokemonV2Pokemonspecy {

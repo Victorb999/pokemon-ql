@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Pokemon type colors ──────────────────────────── */
 :root {
   --normal: #d3d3af;
   --fighting: #d56723;
@@ -24,6 +25,38 @@
   --unknown: #000;
   --shadow: #333;
 }
+
+/* ── Semantic theme tokens (dark default) ─────────── */
+:root {
+  --bg-base:      #0c0a09;   /* stone-950 */
+  --bg-surface:   #1c1917;   /* stone-900 */
+  --bg-elevated:  #292524;   /* stone-800 */
+  --bg-muted:     #44403c;   /* stone-700 */
+  --text-primary: #f5f5f4;   /* stone-100 */
+  --text-muted:   #a8a29e;   /* stone-400 */
+  --border-base:  #57534e;   /* stone-600 */
+  --header-bg:    #0c0a09;
+}
+
+/* Light theme overrides */
+:root.light {
+  --bg-base:      #fafaf9;   /* stone-50  */
+  --bg-surface:   #e7e5e4;   /* stone-200 */
+  --bg-elevated:  #d6d3d1;   /* stone-300 */
+  --bg-muted:     #a8a29e;   /* stone-400 */
+  --text-primary: #1c1917;   /* stone-900 */
+  --text-muted:   #57534e;   /* stone-600 */
+  --border-base:  #d6d3d1;   /* stone-300 */
+  --header-bg:    #e7e5e4;
+}
+
+/* ── Apply semantic tokens to Tailwind utility classes ── */
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+}
+
+/* ── Patterns ───────────────────────────────────────── */
 .pattern {
   background-image: url("../public/pattern/hexagon7.svg");
 }
@@ -37,124 +70,56 @@
   background-image: url("../public/pattern/leaves.svg");
 }
 
-.normal {
-  background-color: var(--normal);
-}
-.fighting {
-  background-color: var(--fighting);
-}
-.flying {
-  background-color: var(--flying);
-}
-.poison {
-  background-color: var(--poison);
-}
-.ground {
-  background-color: var(--ground);
-}
-.rock {
-  background-color: var(--rock);
-}
-.bug {
-  background-color: var(--bug);
-}
-.ghost {
-  background-color: var(--ghost);
-}
-.steel {
-  background-color: var(--steel);
-}
-.fire {
-  background-color: var(--fire);
-}
-.water {
-  background-color: var(--water);
-}
-.grass {
-  background-color: var(--grass);
-}
-.electric {
-  background-color: var(--electric);
-}
-.psychic {
-  background-color: var(--psychic);
-}
-.ice {
-  background-color: var(--ice);
-}
-.dragon {
-  background-color: var(--dragon);
-}
-.dark {
-  background-color: var(--dark);
-}
-.fairy {
-  background-color: var(--fairy);
-}
-.unknown {
-  background-color: var(--unknown);
-}
-.shadow {
-  background-color: var(--shadow);
-}
+/* ── Pokemon type background classes ────────────────── */
+.normal   { background-color: var(--normal);   }
+.fighting { background-color: var(--fighting); }
+.flying   { background-color: var(--flying);   }
+.poison   { background-color: var(--poison);   }
+.ground   { background-color: var(--ground);   }
+.rock     { background-color: var(--rock);     }
+.bug      { background-color: var(--bug);      }
+.ghost    { background-color: var(--ghost);    }
+.steel    { background-color: var(--steel);    }
+.fire     { background-color: var(--fire);     }
+.water    { background-color: var(--water);    }
+.grass    { background-color: var(--grass);    }
+.electric { background-color: var(--electric); }
+.psychic  { background-color: var(--psychic);  }
+.ice      { background-color: var(--ice);      }
+.dragon   { background-color: var(--dragon);   }
+.dark     { background-color: var(--dark);     }
+.fairy    { background-color: var(--fairy);    }
+.unknown  { background-color: var(--unknown);  }
+.shadow   { background-color: var(--shadow);   }
 
-.border-normal {
-  border-color: var(--normal);
-}
-.border-fighting {
-  border-color: var(--fighting);
-}
-.border-flying {
-  border-color: var(--flying);
-}
-.border-poison {
-  border-color: var(--poison);
-}
-.border-ground {
-  border-color: var(--ground);
-}
-.border-rock {
-  border-color: var(--rock);
-}
-.border-bug {
-  border-color: var(--bug);
-}
-.border-ghost {
-  border-color: var(--ghost);
-}
-.border-steel {
-  border-color: var(--steel);
-}
-.border-fire {
-  border-color: var(--fire);
-}
-.border-water {
-  border-color: var(--water);
-}
-.border-grass {
-  border-color: var(--grass);
-}
-.border-electric {
-  border-color: var(--electric);
-}
-.border-psychic {
-  border-color: var(--psychic);
-}
-.border-ice {
-  border-color: var(--ice);
-}
-.border-dragon {
-  border-color: var(--dragon);
-}
-.border-dark {
-  border-color: var(--dark);
-}
-.border-fairy {
-  border-color: var(--fairy);
-}
-.border-unknown {
-  border-color: var(--unknown);
-}
-.border-shadow {
-  border-color: var(--shadow);
-}
+/* ── Border type classes ────────────────────────────── */
+.border-normal   { border-color: var(--normal);   }
+.border-fighting { border-color: var(--fighting); }
+.border-flying   { border-color: var(--flying);   }
+.border-poison   { border-color: var(--poison);   }
+.border-ground   { border-color: var(--ground);   }
+.border-rock     { border-color: var(--rock);     }
+.border-bug      { border-color: var(--bug);      }
+.border-ghost    { border-color: var(--ghost);    }
+.border-steel    { border-color: var(--steel);    }
+.border-fire     { border-color: var(--fire);     }
+.border-water    { border-color: var(--water);    }
+.border-grass    { border-color: var(--grass);    }
+.border-electric { border-color: var(--electric); }
+.border-psychic  { border-color: var(--psychic);  }
+.border-ice      { border-color: var(--ice);      }
+.border-dragon   { border-color: var(--dragon);   }
+.border-dark     { border-color: var(--dark);     }
+.border-fairy    { border-color: var(--fairy);    }
+.border-unknown  { border-color: var(--unknown);  }
+.border-shadow   { border-color: var(--shadow);   }
+
+/* ── Theme-aware utility overrides ──────────────────── */
+.theme-bg-base     { background-color: var(--bg-base);    }
+.theme-bg-surface  { background-color: var(--bg-surface); }
+.theme-bg-elevated { background-color: var(--bg-elevated);}
+.theme-bg-muted    { background-color: var(--bg-muted);   }
+.theme-text        { color: var(--text-primary); }
+.theme-text-muted  { color: var(--text-muted);  }
+.theme-border      { border-color: var(--border-base); }
+.theme-header      { background-color: var(--header-bg); }

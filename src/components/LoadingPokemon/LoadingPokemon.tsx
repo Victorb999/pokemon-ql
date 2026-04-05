@@ -11,7 +11,7 @@ export const LoadingPokemon = ({ load, msg }: LoadingPokemonProps) => {
   return (
     <div className="flex flex-col items-center justify-center h-[100dvh]">
       <div
-        className="p-4 gap-4 rounded bg-white border border-stone-300 
+        className="p-4 gap-4 rounded theme-bg-surface border theme-border 
       shadow-lg flex flex-col items-center justify-center"
       >
         <Image
@@ -20,7 +20,7 @@ export const LoadingPokemon = ({ load, msg }: LoadingPokemonProps) => {
           width={200}
           height={200}
         />
-        <p className="text-stone-500">{msg}</p>
+        <p className="theme-text-muted">{msg}</p>
       </div>
     </div>
   )

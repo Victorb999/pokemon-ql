@@ -28,7 +28,7 @@ export const HomePokemon = () => {
         <input
           type="text"
           placeholder="Search Pokemon number"
-          className="h-12 rounded p-4 text-black"
+          className="h-12 rounded p-4 text-black w-56"
           ref={searchPokemonValue}
         />
         <button

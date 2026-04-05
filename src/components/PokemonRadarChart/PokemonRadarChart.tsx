@@ -9,6 +9,8 @@ import {
     ResponsiveContainer,
     Tooltip,
 } from "recharts"
+import { useAtom } from "jotai"
+import { themeAtom } from "@/src/store/store"
 
 interface PokemonRadarChartProps {
     stats: PokemonV2Pokemonstat[]
@@ -51,6 +53,8 @@ const formatStatName = (name: string) => {
 }
 
 export const PokemonRadarChart = ({ stats, color }: PokemonRadarChartProps) => {
+    const [theme] = useAtom(themeAtom)
+
     const chartData = stats.map((stat) => ({
         subject: formatStatName(stat.pokemon_v2_stat.name),
         value: stat.base_stat,
@@ -58,12 +62,14 @@ export const PokemonRadarChart = ({ stats, color }: PokemonRadarChartProps) => {
     }))
 
     const hexColor = typeColors[color] || "#ca8a04"
+    const tickColor = theme === "dark" ? "#f5f5f4" : "#1c1917"
+    const gridColor = theme === "dark" ? "#57534e" : "#d6d3d1"
 
     const CustomTooltip = ({ active, payload }: any) => {
         if (active && payload && payload.length) {
             return (
-                <div className="bg-stone-800 p-2 border border-stone-600 rounded">
-                    <p className="text-white font-bold">{`${payload[0].payload.subject}: ${payload[0].value}`}</p>
+                <div className="theme-bg-elevated p-2 border theme-border rounded">
+                    <p className="theme-text font-bold">{`${payload[0].payload.subject}: ${payload[0].value}`}</p>
                 </div>
             )
         }
@@ -77,10 +83,10 @@ export const PokemonRadarChart = ({ stats, color }: PokemonRadarChartProps) => {
             <div className="w-full h-[250px] mb-4">
                 <ResponsiveContainer width="100%" height="100%">
                     <RadarChart cx="50%" cy="50%" outerRadius="70%" data={chartData}>
-                        <PolarGrid stroke="#57534e" />
+                        <PolarGrid stroke={gridColor} />
                         <PolarAngleAxis
                             dataKey="subject"
-                            tick={{ fill: "#f5f5f4", fontSize: 12, fontWeight: "bold" }}
+                            tick={{ fill: tickColor, fontSize: 12, fontWeight: "bold" }}
                         />
                         <PolarRadiusAxis angle={30} domain={[0, 250]} tick={false} axisLine={false} />
                         <Radar

@@ -32,6 +32,9 @@ const pokemonQuery = graphql(`
           pokemon_v2_movedamageclass {
             name
           }
+          pokemon_v2_moveflavortexts(where: { language_id: { _eq: 9 } }, limit: 1) {
+            flavor_text
+          }
         }
       }
       pokemon_v2_pokemonspecy {

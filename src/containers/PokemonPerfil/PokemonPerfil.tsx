@@ -49,20 +49,19 @@ export const PokemonPerfil = ({
       border-2 border-yellow-700  hover:border-amber-200 hover:shadow-lg
       p-4 gap-2 w-[90%] lg:w-[70%] xl:w-[60%] 2xl:w-[46%]
       ${types[0].pokemon_v2_type.name}
-      bg-stone-900
+      theme-bg-surface
       pattern-negative`}
     >
       <div className="flex items-center justify-center">
         <Image src={urlImg} alt={name} width={300} height={300} />
       </div>
       <div className="flex flex-col gap-2 max-w-full md:max-w-[400px] w-full">
-        <div className="flex gap-4 border-b border-stone-600 pb-2 mb-2">
+        <div className="flex gap-4 border-b theme-border pb-2 mb-2">
           <button
             onClick={() => setActiveTab("about")}
             className={`text-lg font-bold pb-1 ${activeTab === "about"
-
-              ? "text-stone-100 border-b-2 border-stone-200"
-              : "text-stone-100 hover:text-stone-200"
+              ? "theme-text border-b-2 theme-border"
+              : "theme-text hover:text-stone-200"
               }`}
           >
             About
@@ -70,7 +69,7 @@ export const PokemonPerfil = ({
           <button
             onClick={() => setActiveTab("stats")}
             className={`text-lg font-bold pb-1 ${activeTab === "stats"
-              ? "text-stone-100 border-b-2 border-stone-200"
+              ? "theme-text border-b-2 theme-border"
               : " hover:text-stone-200"
               }`}
           >
@@ -79,7 +78,7 @@ export const PokemonPerfil = ({
           <button
             onClick={() => setActiveTab("radar")}
             className={`text-lg font-bold pb-1 ${activeTab === "radar"
-              ? "text-stone-100 border-b-2 border-stone-200"
+              ? "theme-text border-b-2 theme-border"
               : " hover:text-stone-200"
               }`}
           >
