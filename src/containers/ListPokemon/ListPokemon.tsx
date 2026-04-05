@@ -16,7 +16,7 @@ export const ListPokemon = ({ data }: ListPokemonProps) => {
         <div
           key={pokemon.id}
           className={`flex flex-col items-center bg-rose-900
-            ${pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}
+            ${pokemon.pokemon_v2_pokemontypes?.[0]?.pokemon_v2_type.name}
             border-2 border-yellow-700 p-4 w-[128px] gap-2
             hover:opacity-80
           hover:border-amber-200 hover:shadow-lg pattern-negative`}

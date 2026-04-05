@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query"
 import { useAtom } from "jotai"
 import { requestPokemonListPerType } from "../../../services/requestListPokemon"
 import { typeIdAtom } from "../../../store/store"
+import { PokemonList } from "../../../types/types"
 import { SelectType } from "../../../components/SelectType/SelectType"
 import { ListPokemon } from "../../../containers/ListPokemon/ListPokemon"
 import { LoadingPokemon } from "../../../components/LoadingPokemon/LoadingPokemon"
@@ -45,7 +46,7 @@ export default function Page({ params }: PageProps) {
       {data && data.pokemon_v2_typeefficacy && (
         <TypeEfficacy efficacy={data.pokemon_v2_typeefficacy} />
       )}
-      {typeId !== "" && <ListPokemon data={data} />}
+      {typeId !== "" && data && <ListPokemon data={data as { pokemon_v2_pokemon: PokemonList[] }} />}
     </div>
   )
 }

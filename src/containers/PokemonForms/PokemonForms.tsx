@@ -30,16 +30,16 @@ export const PokemonForms = ({ forms }: PokemonFormsProps) => {
               <span>#{formObj.pokemon_id}</span>
               {formObj.pokemon_v2_pokemon.pokemon_v2_pokemonsprites[0].sprites
                 .front_default && (
-                <Image
-                  src={
-                    formObj.pokemon_v2_pokemon.pokemon_v2_pokemonsprites[0]
-                      .sprites.front_default
-                  }
-                  alt={formObj.form_name}
-                  width={96}
-                  height={96}
-                />
-              )}
+                  <Image
+                    src={
+                      formObj.pokemon_v2_pokemon.pokemon_v2_pokemonsprites[0]
+                        .sprites.front_default
+                    }
+                    alt={formObj.form_name}
+                    width={96}
+                    height={96}
+                  />
+                )}
 
               <h3>{formObj.name}</h3>
 

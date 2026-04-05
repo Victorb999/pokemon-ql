@@ -2,10 +2,10 @@ import { LabelTypes } from "../LabelType/LabelType"
 
 interface EfficacyItem {
   damage_factor: number
-  target_type_id: number
-  pokemonV2TypeByTargetTypeId: {
+  target_type_id?: number | null | undefined
+  pokemonV2TypeByTargetTypeId?: {
     name: string
-  }
+  } | null | undefined
 }
 
 interface TypeEfficacyProps {
@@ -28,10 +28,10 @@ export const TypeEfficacy = ({ efficacy }: TypeEfficacyProps) => {
         </h3>
         <div className="flex flex-wrap gap-2">
           {advantages.length > 0 ? (
-            advantages.map((item) => (
+            advantages.map((item, index) => (
               <LabelTypes
-                key={item.target_type_id}
-                name={item.pokemonV2TypeByTargetTypeId.name}
+                key={item.target_type_id || index}
+                name={item.pokemonV2TypeByTargetTypeId?.name || "???"}
               />
             ))
           ) : (
@@ -46,10 +46,10 @@ export const TypeEfficacy = ({ efficacy }: TypeEfficacyProps) => {
         </h3>
         <div className="flex flex-wrap gap-2">
           {disadvantages.length > 0 ? (
-            disadvantages.map((item) => (
+            disadvantages.map((item, index) => (
               <LabelTypes
-                key={item.target_type_id}
-                name={item.pokemonV2TypeByTargetTypeId.name}
+                key={item.target_type_id || index}
+                name={item.pokemonV2TypeByTargetTypeId?.name || "???"}
               />
             ))
           ) : (
@@ -64,10 +64,10 @@ export const TypeEfficacy = ({ efficacy }: TypeEfficacyProps) => {
             Sem Dano (0x)
           </h3>
           <div className="flex flex-wrap gap-2">
-            {noDamage.map((item) => (
+            {noDamage.map((item, index) => (
               <LabelTypes
-                key={item.target_type_id}
-                name={item.pokemonV2TypeByTargetTypeId.name}
+                key={item.target_type_id || index}
+                name={item.pokemonV2TypeByTargetTypeId?.name || "???"}
               />
             ))}
           </div>

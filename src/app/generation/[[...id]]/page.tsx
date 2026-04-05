@@ -2,7 +2,8 @@
 import { useQuery } from "@tanstack/react-query"
 import { useAtom } from "jotai"
 import { requestPokemonListPerGeneration } from "../../../services/requestListPokemon"
-import { generationIdAtom, myStore } from "../../../store/store"
+import { generationIdAtom } from "../../../store/store"
+import { PokemonList } from "../../../types/types"
 import { SelectGeneration } from "../../../components/SelectGeneration/SelectGeneration"
 import { ListPokemon } from "../../../containers/ListPokemon/ListPokemon"
 import { LoadingPokemon } from "../../../components/LoadingPokemon/LoadingPokemon"
@@ -37,8 +38,8 @@ export default function Page({ params }: PageProps) {
   }
 
   const renderList = () => {
-    if (generationId === "") return null
-    return <ListPokemon data={data} />
+    if (generationId === "" || !data) return null
+    return <ListPokemon data={data as { pokemon_v2_pokemon: PokemonList[] }} />
   }
 
   return (
