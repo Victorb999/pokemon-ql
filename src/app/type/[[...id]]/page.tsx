@@ -1,5 +1,5 @@
 "use client"
-import { useQuery } from "react-query"
+import { useQuery } from "@tanstack/react-query"
 import { useAtom } from "jotai"
 import { requestPokemonListPerType } from "../../../services/requestListPokemon"
 import { typeIdAtom } from "../../../store/store"
@@ -17,11 +17,13 @@ interface PageProps {
 export default function Page({ params }: PageProps) {
   const [typeId, settypeId] = useAtom(typeIdAtom)
 
-  const { data, error, isLoading } = useQuery(
-    ["pokemonList", typeId],
-    () => requestPokemonListPerType(typeId),
-    { retry: 0, refetchOnWindowFocus: false ,enabled: typeId !== ""}
-  )
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["pokemonList", typeId],
+    queryFn: () => requestPokemonListPerType(typeId),
+    retry: 0,
+    refetchOnWindowFocus: false,
+    enabled: typeId !== ""
+  })
 
   useEffect(() => {
     params.id && settypeId(params.id[0])
@@ -43,7 +45,7 @@ export default function Page({ params }: PageProps) {
       {data && data.pokemon_v2_typeefficacy && (
         <TypeEfficacy efficacy={data.pokemon_v2_typeefficacy} />
       )}
-        {typeId !== "" && <ListPokemon data={data} />}
+      {typeId !== "" && <ListPokemon data={data} />}
     </div>
   )
 }

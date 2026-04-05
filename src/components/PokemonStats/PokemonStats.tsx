@@ -28,3 +28,4 @@ export const PokemonStats = ({ stats, color }: PokemonStatsProps) => {
     </div>
   )
 }
+

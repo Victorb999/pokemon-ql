@@ -7,6 +7,7 @@ import Image from "next/image"
 import { useState } from "react"
 import { PokemonAbout } from "../../components/PokemonAbout/PokemonAbout"
 import { PokemonStats } from "../../components/PokemonStats/PokemonStats"
+import { PokemonRadarChart } from "../../components/PokemonRadarChart/PokemonRadarChart"
 
 interface PokemonPerfilProps {
   urlImg: string
@@ -39,7 +40,7 @@ export const PokemonPerfil = ({
   types,
   stats,
 }: PokemonPerfilProps) => {
-  const [activeTab, setActiveTab] = useState<"about" | "stats">("about")
+  const [activeTab, setActiveTab] = useState<"about" | "stats" | "radar">("about")
 
   return (
     <div
@@ -58,24 +59,31 @@ export const PokemonPerfil = ({
         <div className="flex gap-4 border-b border-stone-600 pb-2 mb-2">
           <button
             onClick={() => setActiveTab("about")}
-            className={`text-lg font-bold pb-1 ${
-              activeTab === "about"
+            className={`text-lg font-bold pb-1 ${activeTab === "about"
 
                 ? "text-stone-100 border-b-2 border-stone-200"
                 : "text-stone-100 hover:text-stone-200"
-            }`}
+              }`}
           >
             About
           </button>
           <button
             onClick={() => setActiveTab("stats")}
-            className={`text-lg font-bold pb-1 ${
-              activeTab === "stats"
+            className={`text-lg font-bold pb-1 ${activeTab === "stats"
                 ? "text-stone-100 border-b-2 border-stone-200"
                 : " hover:text-stone-200"
-            }`}
+              }`}
           >
             Stats
+          </button>
+          <button
+            onClick={() => setActiveTab("radar")}
+            className={`text-lg font-bold pb-1 ${activeTab === "radar"
+                ? "text-stone-100 border-b-2 border-stone-200"
+                : " hover:text-stone-200"
+              }`}
+          >
+            Radar
           </button>
         </div>
 
@@ -96,6 +104,10 @@ export const PokemonPerfil = ({
 
         {activeTab === "stats" && (
           <PokemonStats stats={stats} color={types[0].pokemon_v2_type.name} />
+        )}
+
+        {activeTab === "radar" && (
+          <PokemonRadarChart stats={stats} color={types[0].pokemon_v2_type.name} />
         )}
       </div>
     </div>

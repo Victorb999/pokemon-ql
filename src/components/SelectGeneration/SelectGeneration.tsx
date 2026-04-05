@@ -1,5 +1,5 @@
 import { useAtom } from "jotai"
-import { useQuery } from "react-query"
+import { useQuery } from "@tanstack/react-query"
 import { generationIdAtom } from "../../store/store"
 import { requestListGeneration } from "../../services/requestListGeneration"
 import { GenerationList } from "../../types/types"
@@ -10,7 +10,7 @@ interface ListGenerationProps {
 
 export const SelectGeneration = () => {
   const [generationId, setGenerationId] = useAtom(generationIdAtom)
-  const { data } = useQuery(["generationList"], () => requestListGeneration())
+  const { data } = useQuery({ queryKey: ["generationList"], queryFn: () => requestListGeneration() })
   return (
     <div className="flex gap-2 justify-center items-center">
       <label htmlFor="generation">Generation:</label>

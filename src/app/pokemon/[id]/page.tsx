@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image"
-import { useQuery } from "react-query"
+import { useQuery } from "@tanstack/react-query"
 import { requestPokemon } from "@/src/services/requestPokemon"
 import { PokemonPerfil } from "@/src/containers/PokemonPerfil/PokemonPerfil"
 import { PokemonForms } from "@/src/containers/PokemonForms/PokemonForms"
@@ -10,9 +10,10 @@ interface PageProps {
 }
 
 export default function Page({ params }: PageProps) {
-  const { data, error, isLoading } = useQuery(["pokemon", params.id], () =>
-    requestPokemon(params.id)
-  )
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["pokemon", params.id],
+    queryFn: () => requestPokemon(params.id)
+  })
 
   if (data) {
     return (
@@ -52,13 +53,13 @@ export default function Page({ params }: PageProps) {
           generationId={data.pokemon_v2_pokemonspecy.pokemon_v2_generation.id}
           stats={data.pokemon_v2_pokemonstats}
         />
-        { data.pokemon_v2_pokemonspecy.pokemon_v2_pokemons.length > 1 && (
+        {data.pokemon_v2_pokemonspecy.pokemon_v2_pokemons.length > 1 && (
           <PokemonForms
             forms={data.pokemon_v2_pokemonspecy.pokemon_v2_pokemons}
           />
         )}
 
-        {data.pokemon_v2_pokemonspecy.pokemon_v2_evolutionchain.pokemon_v2_pokemonspecies.length > 1  && (
+        {data.pokemon_v2_pokemonspecy.pokemon_v2_evolutionchain.pokemon_v2_pokemonspecies.length > 1 && (
           <PokemonFormsEvolutions
             evolutions={data.pokemon_v2_pokemonspecy.pokemon_v2_evolutionchain}
           />

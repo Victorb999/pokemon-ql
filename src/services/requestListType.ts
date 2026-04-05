@@ -1,25 +1,18 @@
-const API_URL = "https://beta.pokeapi.co/graphql/v1beta"
+import { GraphQLClient } from "graphql-request"
+import { graphql } from "../gql"
 
-const listPokemonPerType = () => {
-  return `
-  query samplePokeAPIquery {
+const client = new GraphQLClient("https://beta.pokeapi.co/graphql/v1beta")
+
+const listPokemonPerTypeQuery = graphql(`
+  query listPokemonPerTypeQuery {
     pokemon_v2_type {
-        id
-        name
+      id
+      name
     }
   }
-`
-}
+`)
 
 export const requestListType = async () => {
-  const response = await fetch(API_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ query: listPokemonPerType() }),
-  })
-
-  const result = await response.json()
-  return result.data
+  const result = await client.request(listPokemonPerTypeQuery)
+  return result
 }

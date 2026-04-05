@@ -1,5 +1,5 @@
 import { useAtom } from "jotai"
-import { useQuery } from "react-query"
+import { useQuery } from "@tanstack/react-query"
 import { typeIdAtom } from "../../store/store"
 import { requestListType } from "../../services/requestListType"
 import { TypeList } from "../../types/types"
@@ -10,7 +10,7 @@ interface ListTypeProps {
 
 export const SelectType = () => {
   const [typeId, setTypeId] = useAtom(typeIdAtom)
-  const { data } = useQuery(["TypeList"], () => requestListType())
+  const { data } = useQuery({ queryKey: ["TypeList"], queryFn: () => requestListType() })
   return (
     <div className="flex gap-2 justify-center items-center">
       <label htmlFor="type">Type:</label>
@@ -22,15 +22,15 @@ export const SelectType = () => {
         value={typeId}
       >
         {data &&
-        <>
-        <option value="" disabled>
+          <>
+            <option value="" disabled>
               Select a type
             </option>
-          {data.pokemon_v2_type.map((type: TypeList) => (
-            <option key={type.id} value={type.id}>
-              {type.name}
-            </option>
-          ))}
+            {data.pokemon_v2_type.map((type: TypeList) => (
+              <option key={type.id} value={type.id}>
+                {type.name}
+              </option>
+            ))}
           </>}
       </select>
     </div>
