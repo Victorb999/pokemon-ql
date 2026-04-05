@@ -1,26 +1,25 @@
 import Image from "next/image"
-import pikachuLoading from "../../public/pikachu-loading.gif"
-import gastlyLoading from "../../public/gastly-loading.gif"
 
 interface LoadingPokemonProps {
   load: "gastly" | "pikachu"
   msg?: string
+  fullScreen?: boolean
 }
 
-export const LoadingPokemon = ({ load, msg }: LoadingPokemonProps) => {
+export const LoadingPokemon = ({ load, msg, fullScreen = true }: LoadingPokemonProps) => {
   return (
-    <div className="flex flex-col items-center justify-center h-[100dvh]">
+    <div className={`flex flex-col items-center justify-center ${fullScreen ? "h-[100dvh]" : "p-4"}`}>
       <div
-        className="p-4 gap-4 rounded theme-bg-surface border theme-border 
-      shadow-lg flex flex-col items-center justify-center"
+        className="p-4 gap-4 rounded bg-stone-900/40 backdrop-blur-md border border-white/10 
+      shadow-2xl flex flex-col items-center justify-center"
       >
         <Image
-          src={load === "gastly" ? gastlyLoading : pikachuLoading}
+          src={load === "gastly" ? "/gastly-loading.gif" : "/pikachu-loading.gif"}
           alt="loading"
           width={200}
           height={200}
         />
-        <p className="theme-text-muted">{msg}</p>
+        <p className="theme-text-muted font-bold animate-pulse">{msg}</p>
       </div>
     </div>
   )

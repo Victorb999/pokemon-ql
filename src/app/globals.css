@@ -72,19 +72,19 @@ body {
 
 /* ── Patterns ───────────────────────────────────────── */
 .pattern {
-  background-image: url("../public/pattern/hexagon7.svg");
+  background-image: url("/pattern/hexagon7.svg");
 }
 
 .pattern-negative {
-  background-image: url("../public/pattern/hexagon6.svg");
+  background-image: url("/pattern/hexagon6.svg");
 }
 
 .pattern-square {
-  background-image: url("../public/pattern/squaresplus.svg");
+  background-image: url("/pattern/squaresplus.svg");
 }
 
 .pattern-leave {
-  background-image: url("../public/pattern/leaves.svg");
+  background-image: url("/pattern/leaves.svg");
 }
 
 /* ── Pokemon type background classes ────────────────── */
@@ -280,4 +280,22 @@ body {
 
 .theme-header {
   background-color: var(--header-bg);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }
