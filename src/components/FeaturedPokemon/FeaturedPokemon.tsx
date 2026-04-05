@@ -39,7 +39,7 @@ export const FeaturedPokemon = () => {
             </div>
 
             <div className="flex-1 z-10 text-center md:text-left">
-                <span className="text-xs font-bold text-blue-500 uppercase tracking-[0.2em] mb-2 block">Pokémon em Destaque</span>
+                <span className="text-xs font-bold text-blue-500 uppercase tracking-[0.2em] mb-2 block">Featured Pokémon</span>
                 <h2 className="text-5xl md:text-7xl font-black capitalize mb-4 drop-shadow-sm theme-text tracking-tight">{pokemon.name}</h2>
                 <div className="flex gap-2 mb-6 justify-center md:justify-start">
                     {pokemon.pokemon_v2_pokemontypes.map((type: any) => (
