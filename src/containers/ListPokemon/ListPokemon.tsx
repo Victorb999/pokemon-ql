@@ -21,7 +21,7 @@ export const ListPokemon = ({ data }: ListPokemonProps) => {
             hover:opacity-80
           hover:border-amber-200 hover:shadow-lg pattern-negative`}
         >
-          <Link href={`/pokemon/${pokemon.id}`} as={`/pokemon/${pokemon.id}`}>
+          <Link href={`/pokemon/${pokemon.id}`} as={`/pokemon/${pokemon.id}`} className="flex flex-col items-center">
             <h1 className="text-md font-bold capitalize text-stone-100">{pokemon.name}</h1>
             <h2 className="text-stone-200 font-bold text-xs"># {pokemon.id}</h2>
 
@@ -33,16 +33,17 @@ export const ListPokemon = ({ data }: ListPokemonProps) => {
                 height={96}
               />
             )}
-
-            <div>
-              {pokemon.pokemon_v2_pokemontypes.map((type) => (
-                <LabelTypes
-                  name={type.pokemon_v2_type.name}
-                  key={type.pokemon_v2_type.id}
-                />
-              ))}
-            </div>
           </Link>
+
+          <div>
+            {pokemon.pokemon_v2_pokemontypes.map((type) => (
+              <LabelTypes
+                name={type.pokemon_v2_type.name}
+                id={type.pokemon_v2_type.id}
+                key={type.pokemon_v2_type.id}
+              />
+            ))}
+          </div>
         </div>
       ))}
     </div>

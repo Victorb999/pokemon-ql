@@ -64,7 +64,7 @@ export const PokemonAbout = ({
         <span className="font-bold">Type:</span>
         <div className="flex gap-2 mt-2">
           {types.map((type) => (
-            <LabelTypes key={type.id} name={type.pokemon_v2_type.name} />
+            <LabelTypes key={type.id} name={type.pokemon_v2_type.name} id={type.pokemon_v2_type.id} />
           ))}
         </div>
       </div>

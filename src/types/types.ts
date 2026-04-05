@@ -73,6 +73,7 @@ export interface PokemonV2Move {
   power?: number
   pp?: number
   pokemon_v2_type: {
+    id: number
     name: string
   }
   pokemon_v2_movedamageclass: {

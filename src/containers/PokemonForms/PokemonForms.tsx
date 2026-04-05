@@ -19,29 +19,30 @@ export const PokemonForms = ({ forms }: PokemonFormsProps) => {
         {forms.map((form, index) => {
           const formObj = form.pokemon_v2_pokemonforms[0]
           return (
-            <Link
-              href={`/pokemon/${formObj.pokemon_id}`}
+            <div
               key={formObj.id + index}
               className={`flex flex-col items-center 
               type-${formObj.pokemon_v2_pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}
                 border-2 border-yellow-700 p-4 w-[200px] gap-2 overflow-hidden min-h-[300px]
                 hover:border-amber-200 hover:shadow-lg pattern-negative`}
             >
-              <span className="text-stone-200 font-bold">#{formObj.pokemon_id}</span>
-              {formObj.pokemon_v2_pokemon.pokemon_v2_pokemonsprites[0].sprites
-                .front_default && (
-                  <Image
-                    src={
-                      formObj.pokemon_v2_pokemon.pokemon_v2_pokemonsprites[0]
-                        .sprites.front_default
-                    }
-                    alt={formObj.form_name}
-                    width={96}
-                    height={96}
-                  />
-                )}
+              <Link href={`/pokemon/${formObj.pokemon_id}`} className="flex flex-col items-center gap-2">
+                <span className="text-stone-200 font-bold">#{formObj.pokemon_id}</span>
+                {formObj.pokemon_v2_pokemon.pokemon_v2_pokemonsprites[0].sprites
+                  .front_default && (
+                    <Image
+                      src={
+                        formObj.pokemon_v2_pokemon.pokemon_v2_pokemonsprites[0]
+                          .sprites.front_default
+                      }
+                      alt={formObj.form_name}
+                      width={96}
+                      height={96}
+                    />
+                  )}
 
-              <h3 className="text-stone-100 font-bold capitalize">{formObj.name}</h3>
+                <h3 className="text-stone-100 font-bold capitalize">{formObj.name}</h3>
+              </Link>
 
               <div className="flex gap-2">
                 {formObj.pokemon_v2_pokemon.pokemon_v2_pokemontypes.map(
@@ -50,6 +51,7 @@ export const PokemonForms = ({ forms }: PokemonFormsProps) => {
                       <LabelTypes
                         key={type.id + index}
                         name={type.pokemon_v2_type.name}
+                        id={type.pokemon_v2_type.id}
                       />
                     )
                   }
@@ -61,7 +63,7 @@ export const PokemonForms = ({ forms }: PokemonFormsProps) => {
                   Mega
                 </span>
               )}
-            </Link>
+            </div>
           )
         })}
         {/* <pre>{JSON.stringify(forms, null, 2)}</pre> */}

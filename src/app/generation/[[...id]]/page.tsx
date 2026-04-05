@@ -26,27 +26,32 @@ export default function Page({ params }: PageProps) {
   })
 
   useEffect(() => {
-    params.id && setGenerationId(params.id[0])
+    if (params.id) {
+      setGenerationId(params.id[0])
+    } else {
+      setGenerationId("")
+    }
   }, [params.id, setGenerationId])
-  // Função para lidar com a seleção do <select>
 
-  if (isLoading) return <LoadingPokemon load="pikachu" />
-  if (error) {
-    const errorMessage =
-      (error as Error)?.message || "An unknown error occurred"
-    return <LoadingPokemon load="gastly" msg={errorMessage} />
-  }
-
-  const renderList = () => {
-    if (generationId === "" || !data) return null
-    return <ListPokemon data={data as { pokemon_v2_pokemon: PokemonList[] }} />
+  const renderContent = () => {
+    if (isLoading) return <LoadingPokemon load="pikachu" />
+    if (error) {
+      const errorMessage = (error as Error)?.message || "An unknown error occurred"
+      return <LoadingPokemon load="gastly" msg={errorMessage} />
+    }
+    if (generationId !== "" && data) {
+      return (
+        <ListPokemon data={data as { pokemon_v2_pokemon: PokemonList[] }} />
+      )
+    }
+    return null
   }
 
   return (
     <div className="flex flex-col items-center p-4 gap-4">
       <h1 className="text-3xl font-bold">Pokémon list per generation</h1>
       <SelectGeneration />
-      {renderList()}
+      {renderContent()}
     </div>
   )
 }

@@ -27,6 +27,7 @@ const pokemonQuery = graphql(`
           power
           pp
           pokemon_v2_type {
+            id
             name
           }
           pokemon_v2_movedamageclass {
@@ -134,6 +135,7 @@ const pokemonQuery = graphql(`
       pokemon_v2_pokemontypes {
         id
         pokemon_v2_type {
+          id
           name
         }
       }

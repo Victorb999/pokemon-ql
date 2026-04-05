@@ -60,7 +60,11 @@ export const PokemonMoves = ({ moves, color }: PokemonMovesProps) => {
                         <div className="flex justify-around theme-bg-elevated rounded p-3 gap-4">
                             <div className="flex flex-col items-center gap-1">
                                 <span className="text-[10px] theme-text-muted uppercase tracking-widest">Type</span>
-                                <LabelTypes name={selectedMove.pokemon_v2_move.pokemon_v2_type.name} upper />
+                                <LabelTypes
+                                    name={selectedMove.pokemon_v2_move.pokemon_v2_type.name}
+                                    id={selectedMove.pokemon_v2_move.pokemon_v2_type.id}
+                                    upper
+                                />
                             </div>
                             <div className="flex flex-col items-center gap-1">
                                 <span className="text-[10px] theme-text-muted uppercase tracking-widest">Category</span>

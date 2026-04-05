@@ -27,15 +27,30 @@ export default function Page({ params }: PageProps) {
   })
 
   useEffect(() => {
-    params.id && settypeId(params.id[0])
+    if (params.id) {
+      settypeId(params.id[0])
+    } else {
+      settypeId("")
+    }
   }, [params.id, settypeId])
-  // Função para lidar com a seleção do <select>
 
-  if (isLoading) return <LoadingPokemon load="pikachu" />
-  if (error) {
-    const errorMessage =
-      (error as Error)?.message || "An unknown error occurred"
-    return <LoadingPokemon load="gastly" msg={errorMessage} />
+  const renderContent = () => {
+    if (isLoading) return <LoadingPokemon load="pikachu" />
+    if (error) {
+      const errorMessage = (error as Error)?.message || "An unknown error occurred"
+      return <LoadingPokemon load="gastly" msg={errorMessage} />
+    }
+    if (typeId !== "" && data) {
+      return (
+        <>
+          {data.pokemon_v2_typeefficacy && (
+            <TypeEfficacy efficacy={data.pokemon_v2_typeefficacy} />
+          )}
+          <ListPokemon data={data as { pokemon_v2_pokemon: PokemonList[] }} />
+        </>
+      )
+    }
+    return null
   }
 
   return (
@@ -43,10 +58,7 @@ export default function Page({ params }: PageProps) {
       <h1 className="text-3xl font-bold">Pokémon list per type</h1>
 
       <SelectType />
-      {data && data.pokemon_v2_typeefficacy && (
-        <TypeEfficacy efficacy={data.pokemon_v2_typeefficacy} />
-      )}
-      {typeId !== "" && data && <ListPokemon data={data as { pokemon_v2_pokemon: PokemonList[] }} />}
+      {renderContent()}
     </div>
   )
 }

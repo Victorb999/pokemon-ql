@@ -1,5 +1,6 @@
 import { useAtom } from "jotai"
 import { useQuery } from "@tanstack/react-query"
+import { useRouter } from "next/navigation"
 import { typeIdAtom } from "../../store/store"
 import { requestListType } from "../../services/requestListType"
 import { TypeList } from "../../types/types"
@@ -10,7 +11,15 @@ interface ListTypeProps {
 
 export const SelectType = () => {
   const [typeId, setTypeId] = useAtom(typeIdAtom)
+  const router = useRouter()
   const { data } = useQuery({ queryKey: ["TypeList"], queryFn: () => requestListType() })
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newId = e.target.value
+    setTypeId(newId)
+    router.push(`/type/${newId}`)
+  }
+
   return (
     <div className="flex gap-2 justify-center items-center">
       <label htmlFor="type">Type:</label>
@@ -18,7 +27,7 @@ export const SelectType = () => {
         name="type"
         id="type"
         className="theme-bg-elevated p-2 rounded uppercase"
-        onChange={(e) => setTypeId(e.target.value)}
+        onChange={handleChange}
         value={typeId}
       >
         {data &&

@@ -32,6 +32,7 @@ export const TypeEfficacy = ({ efficacy }: TypeEfficacyProps) => {
               <LabelTypes
                 key={item.target_type_id || index}
                 name={item.pokemonV2TypeByTargetTypeId?.name || "???"}
+                id={item.target_type_id || undefined}
               />
             ))
           ) : (
@@ -50,6 +51,7 @@ export const TypeEfficacy = ({ efficacy }: TypeEfficacyProps) => {
               <LabelTypes
                 key={item.target_type_id || index}
                 name={item.pokemonV2TypeByTargetTypeId?.name || "???"}
+                id={item.target_type_id || undefined}
               />
             ))
           ) : (
@@ -68,6 +70,7 @@ export const TypeEfficacy = ({ efficacy }: TypeEfficacyProps) => {
               <LabelTypes
                 key={item.target_type_id || index}
                 name={item.pokemonV2TypeByTargetTypeId?.name || "???"}
+                id={item.target_type_id || undefined}
               />
             ))}
           </div>

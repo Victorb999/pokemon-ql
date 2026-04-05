@@ -1,5 +1,6 @@
 import { useAtom } from "jotai"
 import { useQuery } from "@tanstack/react-query"
+import { useRouter } from "next/navigation"
 import { generationIdAtom } from "../../store/store"
 import { requestListGeneration } from "../../services/requestListGeneration"
 import { GenerationList } from "../../types/types"
@@ -10,7 +11,15 @@ interface ListGenerationProps {
 
 export const SelectGeneration = () => {
   const [generationId, setGenerationId] = useAtom(generationIdAtom)
+  const router = useRouter()
   const { data } = useQuery({ queryKey: ["generationList"], queryFn: () => requestListGeneration() })
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newId = e.target.value
+    setGenerationId(newId)
+    router.push(`/generation/${newId}`)
+  }
+
   return (
     <div className="flex gap-2 justify-center items-center">
       <label htmlFor="generation">Generation:</label>
@@ -18,7 +27,7 @@ export const SelectGeneration = () => {
         name="generation"
         id="generation"
         className="theme-bg-elevated p-2 rounded uppercase"
-        onChange={(e) => setGenerationId(e.target.value)}
+        onChange={handleChange}
         value={generationId}
       >
         {data && (
